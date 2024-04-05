@@ -1,0 +1,116 @@
+<html>
+<head>
+  <title>폼태그 연습</title>
+</head>
+<body>
+  <h2>회 원 가 입</h2>
+  <form name="" method="" action="">  <!-- was action(서버가 받는 파일(atom.jsp, 과거, 해커의 표적 보안 문제),서블릿(MVC(controller) back에서 자바, front에서 html이 view)) 네트워크상 전송방식(패킷) / 3wakehandshake 방식 c(client)의 요청(request)과 s(server)의 응답(respond) 통신(http 통신 특징 요청하고 응답(url로만 한계가 있음)하면 처리하고 신호가 끊기고 서버하고 별개로 나혼자 작업(물고있는게 아님) 실시간으로 바뀌고 싶으면 계속 물고 있어야 해서 서버에 과부화) / method: 전송방식 post(http header로 보냄)/get(url) -->
+    <p>성명 : <input type="text" name="name" id="name" maxlength="10" size="10" /></p>  <!--태그명(input) 속성(type) name이 back에서 쓰이는 변수, id는 front에서-->
+    <p>나이 : <input type="number" name="age" id="age" min="1" max="99" maxlength="2" /></p>  <!-- spin -->
+    <p>닉네임 : <input type="text" name="nickName" id="nickName" size="10" /></p>
+    <p>비밀번호 : <input type="password" name="pwd" id="pwd" maxlength="15" /></p>
+    <p>검색어 : <input type="search" name="search" id="search" /></p>  <!-- 시멘틱스태그(의미있는 태그) == text와 같은것 이나 5부터 의미 부여 위해서 ex)검색 기록 -->
+    <p>이메일 : <input type="email" name="email" id="email" /></p>
+    <p>전화번호 : <input type="tel" name="tel" id="tel" /></p>
+    <p>성별 : 
+      <input type="radio" name="gender" id="male" />남자  <!-- name(변수)은 같으면 배열로 넘어감 / id는 같은 이름을 줄 수 없음) 같은 그룹은 name만 같으면 됨 -->
+      <input type="radio" name="gender" id="female" checked />여자
+    </p>
+    <p>
+      소지한 카드 :
+      <input type="checkbox" name="card" id="card1" />삼성카드
+      <input type="checkbox" name="card" id="card2" />농협카드
+      <input type="checkbox" name="card" id="card3" />신한카드
+      <input type="checkbox" name="card" id="card4" />신한카드
+      <input type="checkbox" name="card" id="card5" />국민카드
+    </p>
+    <p>
+      직업 : 
+      <select name="job" id="job">
+        <option>선택</option>
+        <option>학생</option>
+        <option>회사원</option>
+        <option>군인</option>
+        <option>의사</option>
+        <option>기타</option>
+      </select>
+    </p>
+    <p>
+      좋아하는 음식 : 
+      <select name="food" id="food" size="5" multiple>
+        <option>짜장면</option>
+        <option>돈까스</option>
+        <option>초밥</option>
+        <option>백반</option>
+        <option>피자</option>
+        <option>햄버거</option>
+        <option>제육볶음</option>
+        <option>탕수육</option>
+        <option>라면</option>
+      </select>
+    </p>
+    <p>
+      자기소개 : <textarea rows="5" cols="50" name="content" id="content"></textarea>  <!--크기 설정해줘야/여러줄 사용가능-->
+    </p>
+    <p>
+      첨부파일 : <input type="file" name="file" id="file" />
+    </p>
+    <p>
+      주문수량1 : <input type="range" name="su" id="su" min="1" max="10" value="5" />개
+    </p>
+    <p>
+      주문수량2 : <input type="number" name="su2" id="su2" step="5" min="0" max="20" value="0" />개
+    </p>
+    <p>
+      작업 진행 상태 : <progress value="30" max="100">  <!--진행상태만 보여줌, name, id 딱히 필요는 없음 해도됨-->
+    </p>
+    <p>
+      사용량(트래픽스) : 
+      <meter value="700" low="200" high="800" min="100" max="1000"></meter>
+    </p>
+    <p>
+      그린대학교
+      <select name="hakkwa" id="hakkwa">
+        <optgroup label="공과대학">
+          <option>기계공학과</option>
+          <option>전자공학과</option>
+          <option>컴퓨터공학과</option>
+          <option>토목공학과</option>
+          <option>반도체공학과</option>
+        </optgroup>
+        <optgroup label="인문대학">
+          <option>경제학부</option>
+          <option>행정학부</option>
+          <option>기타학부</option>
+        </optgroup>
+        <optgroup label="자연대학">
+          <option>물리학과</option>
+          <option>화학과</option>
+          <option>수학과</option>
+        </optgroup>
+      </select>
+    </p>
+    <p>
+      대학명 : <input type="text" name="uni" id="uni" value="그린대학교" readonly />
+    </p>
+    <p>
+      대학명 : 
+      <input type="text" name="ac" id="ac" list="choices" required>  <!--필수입력, 순서 관계없음-->
+      <datalist id="choices">
+        <option>서울대학교</option>
+        <option>충북대학교</option>
+        <option>연세대학교</option>
+        <option>고려대학교</option>
+        <option>서강대학교</option>
+      </datalist>
+    </p>
+    <p>
+      날짜 : <input type="date" name="today" id="today" />
+    </p>
+    <p>
+      시간 : <input type="time" name="today2" id="today2" />
+    </p>
+  </form>
+  <p><br/></p>
+</body>
+</html>
