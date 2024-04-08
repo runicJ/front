@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test13.html</title>
+  <style>
+    body {
+      width: 1000px;
+      margin:0px auto; /* width 기준으로 가운데 */
+    }
+    table {
+      border-collapse: collapse;
+      /* margin-top: 50px;
+      margin-bottom: 50px;
+      margin-left: 50px; */
+      margin: 50px;
+    }
+    #tbl {
+      text-align: center;
+    }
+    th {
+      padding:20px;
+    }
+    th, td {  /* cellspacing td에 border를 줘야함 // , 쓰면 앞 뒤 둘다 적용  // 형제셀렉터 */
+      /* border-width: 1px;
+      border-color: gray;
+      border-style: solid; */
+      padding:20px;  /* 패딩도 각각 셀 안에 줘야함 */
+      border: 1px solid gray;
+      /* text-align: center; */
+      color: blueviolet;
+    }
+    /* .aa {background-color: violet;} */
+    /* .bb {background-color: gold;} */
+
+    #tbl_main {
+      text-align: center;
+    }
+
+    .imgA {
+      border: 5px solid red;
+      margin: 50px;  /*이미지와 이미지 사이는 100px*/
+      /* padding: 30px; */
+      padding: 30px 0px;
+    }
+    
+    .imgB {
+      border: 5px double blue;
+      /* margin: 50px 100px 30px 0px; */
+      margin: 50px 100px 30px;  /* 시계방향 안 적으면 위아래 좌우 같이 적용됨
+      padding: 30px;
+    }
+    .imgC {
+      border-style: dashed;  /* inherit 상속받은 것을 그대로 씀 // inset 양각 */
+      margin:0px;
+    }
+    .dd {
+      width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <img src="../../images/arrowUp.png" width="30px" height="60px" />
+  <h2><a name="first">표에 스타일 적용하기</a></h2>
+  <div id="tbl_main">
+    <table id="tbl" style="margin: auto;">  <!--border로 안씀, 5부터 전부 style로 써서 사용-->
+      <tr class="aa">  <!--tag속성이 class속성보다 우선 적용됨-->
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+      </tr>
+      <tr class="bb">
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+      </tr>
+      <tr class="aa">
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+      </tr>
+      <tr class="bb">
+        <td>31</td>
+        <td>32</td>
+        <td>33</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <img src="../../images/duck.jpg" width="300px" height="250px" class="imgA imgB">
+    <img src="../../images/fade.jpg" width="300px" height="250px" class="imgA imgC">
+    <img src="../../images/fancy.jpg" width="300px" height="250px" class="imgA">
+    <img src="../../images/foot.jpg" width="300px" height="250px" class="imgA">
+    <p class="dd">  <!--css javascript 대/소문자 구분(html구분x)-->
+      <img src="../../images/happy.jpg" class="dd" width="300px" height="250px" class="imgD">
+    </p>
+  </div>
+  <div>
+    <p>배경 그림연습</p>  <!--뭐로 묶든 관계없는데 div가 더 큰 개념이긴함(p>div 하면 노란줄)-->
+    <p>배경 그림연습</p>
+    <p style="text-align: center;">배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+  </div>
+</body>
+</html>

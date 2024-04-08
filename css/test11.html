@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test11.html</title>
+  <style>
+    body {
+      background-image: url("../../images/foot.jpg");
+      background-repeat: no-repeat;
+      /* background-position: 50%; */
+      /* background-position: left bottom; */
+      /* background-position: right top; */
+    }
+    table {   /* table 전체 */
+      border-collapse: collapse;
+      /* background-color: aqua; */
+      /* width: 300px;
+      height: 280px; */
+    }
+    th {  /* th 자체가 center 속성 */
+      /* padding:20px;
+      border: 1px solid gray;
+      background-color: pink; */
+    }
+    th, td {  /* cellspacing td에 border를 줘야함 // , 쓰면 앞 뒤 둘다 적용 */
+      /* border-width: 1px;
+      border-color: gray;
+      border-style: solid; */
+      padding:20px;  /* 패딩도 각각 셀 안에 줘야함 */
+      border: 1px solid gray;
+      text-align: center;
+      color: blueviolet;
+    }
+    /* .aa {background-color: violet;} */
+    /* .bb {background-color: gold;} */
+    img {
+      background-position: right bottom;
+    }
+  </style>
+</head>
+<body>
+  <img src="../../images/arrowUp.png" width="30px" height="60px" />
+  <h2><a name="first">표에 스타일 적용하기</a></h2>
+  <table>  <!--border로 안씀, 5부터 전부 style로 써서 사용-->
+    <tr class="aa">  <!--tag속성이 class속성보다 우선 적용됨-->
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+    <tr class="bb">
+      <td>11</td>
+      <td>12</td>
+      <td>13</td>
+    </tr>
+    <tr class="aa">
+      <td>21</td>
+      <td>22</td>
+      <td>23</td>
+    </tr>
+    <tr class="bb">
+      <td>31</td>
+      <td>32</td>
+      <td>33</td>
+    </tr>
+  </table>
+  <div>
+    <p>배경 그림연습</p>  <!--뭐로 묶든 관계없는데 div가 더 큰 개념이긴함(p>div 하면 노란줄)-->
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+  </div>
+</body>
+</html>

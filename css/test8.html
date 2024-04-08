@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test8.html</title>
+
+  <style type="text/css" rel="stylesheet">
+  /* ol > li {color: red;} */ /* 자손선택자(자식(직계존속)과 다름) // css 주석 */  
+    div > div {  /* div 안에 있는 자식 */
+      background-color: yellow;
+    }
+    div > .bb {color:red}
+    /* .bb {color:red}  어차피 bb는 하나뿐 */
+  </style>
+  
+</head>
+<body bgcolor="#ccc">
+  <div>
+    <h2 class="aa">제목2번aa</h2>  <!--div태그의 자식-->
+    <h2 class="bb">제목2번bb</h2>
+    <div>안녕하세요
+      <span>안녕2</span>
+      <span><p class="bb">안녕3</p></span>  <!--span의 자식-->
+    </div>
+    <span class="cc">span입니다.cc</span>
+  </div>
+</body>
+</html>

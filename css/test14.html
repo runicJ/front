@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test14.html</title>
+  <style>
+    * {  /* 전체 셀렉터(모든거 지정/ body는 body안쪽만) // css reset(내것에 기본값으로 주고 싶은 것을 만들어 두고, link tag로 지정해두고 내부셀렉트로 지정)*/
+      margin: 0px;
+      padding: 0px;
+    }
+    table {
+      border-collapse: collapse;
+      background-color: khaki;
+    }
+    #tbl {
+      text-align: center;
+      z-index: 7;
+    }
+    th {
+      padding:20px;
+    }
+    th, td {
+      padding:20px;
+      border: 1px solid gray;
+      color: blueviolet;
+    }
+
+    #tbl {
+      /* position: absolute; */  /*윈도우의 시작*/
+      position: fixed;  /*화면의 시작 // 스크롤해도 계속 그위치 고정*/
+      left: 200px;  /* left의 시작은 왼쪽 위에 부터(웹 x(-)<------> x(+)) */
+      top: 300px;
+    }
+
+    .imgC {
+      position: relative;  /* 이 이미지의 바로 전단계부터 그걸 기점으로 시작(이경우 duck) */
+      left: 200px;
+      top: 300px;
+    }
+
+    #top_arrow {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      border-width: 0px;
+    }
+
+    .imgE {  /* 나중 것이 위로 올라옴 위에서 아래로 */
+      position: absolute;
+      left: 300px;
+      top: 400px;
+      z-index: 5;  /* 가장 뒤로 하고 싶으면 0으로/ 가장 앞 99이런식으로 //원래는 얘가 더 앞인데 표를 앞에 주고 싶어서 .tbl을 더 크게줌 */
+    }
+  </style>
+</head>
+<body>
+  <h2><a name="first">포지션(position)</a></h2>
+  <div>
+    옵션: static(아무것도 안쓰면 기본값), relative, absolute, fixed
+  </div>
+  <a href="#first">
+    <img src="../../images/arrowUp.png" id="top_arrow" width="30px" height="60px" title="타이틀로" />
+  </a>
+  <h2>표에 스타일 적용하기</h2>
+  <div id="tbl_main">
+    <table id="tbl">
+      <tr class="aa">
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+      </tr>
+      <tr class="bb">
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+      </tr>
+      <tr class="aa">
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+      </tr>
+      <tr class="bb">
+        <td>31</td>
+        <td>32</td>
+        <td>33</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <img src="../../images/duck.jpg" width="300px" height="250px" class="imgA imgB">
+    <img src="../../images/fade.jpg" width="300px" height="250px" class="imgA imgC" title="imgC">
+    <img src="../../images/fancy.jpg" width="300px" height="250px" class="imgA">
+    <img src="../../images/foot.jpg" width="300px" height="250px" class="imgA imgE">
+    <p class="dd">
+      <img src="../../images/happy.jpg" class="dd" width="300px" height="250px" class="imgD">
+    </p>
+  </div>
+  <div>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p style="text-align: center;">배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+    <p>배경 그림연습</p>
+  </div>
+</body>
+</html>
