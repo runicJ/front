@@ -1,0 +1,101 @@
+<html>
+<head>
+  <title>Likes</title>
+</head>
+<body>
+  <table bgcolor="#d8e1e8" align="center" width="1000px" height="1000px" colpadding="0px">
+    <tr>
+      <td width="220px" align="center">
+        <table border="0px">
+          <tr cellpadding="2px">
+            <td align="center">
+              <img src="../../images/fancy.jpg" vspace="7px"/>
+            </td>
+          </tr>
+          <tr>
+            <td bgcolor="#CED8FF">
+              <p><font color="#000" size="4"><b>&nbsp;&nbsp&#128035; Dodo<br/>
+              </b></font></p>
+            </td>
+          </tr>
+          <tr align="center">
+            <td bgcolor="#CED8FF">
+              <p><a href="myPage.html" style="text-decoration-line:none;color:black;"><b><i>&nbsp;&nbsp Home</i></b></a></p>
+              <p><a href="about.html" style="text-decoration-line:none;color:black;"><b><i>&nbsp;&nbsp About</i></b></a></p>
+              <p><a href="likes.html" style="text-decoration-line:none;color:black;"><b><i>&nbsp;&nbsp Likes</i></b></a></p>
+              <p><a href="skills.html" style="text-decoration-line:none;color:black;"><b><i>&nbsp;&nbsp Skills</i></b></a></p>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <h2 align="left" style="background-color:#efeff2;padding:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Main에서 내가 좋아하는 것들을 게시해 두었어.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이제 네가 좋아하는 걸 알려줄래?</h2>
+        <form name="" method="post" action="">
+          <table align="center" width:"700px" height="800px" border="1px" style="border-color:#efeff2" cellpadding="20px" cellspacing="0px">
+            <tr>
+              <th bgcolor="#CED8FF"><i>너를 뭐라고 불러야<br/>할지 알려줘</i></th>
+              <td bgcolor="#efeff2"><input type="text" name="nickName" id="nickName" size="10" /></td>
+            </tr>
+            <tr>
+              <th bgcolor="#CED8FF"><i>무엇을 검색하다가<br/>여기에 오게 됐어?</i></th>
+              <td bgcolor="#efeff2"><input type="search" name="search" id="search" /></td>
+            </tr>
+            <tr>
+              <th bgcolor="#CED8FF"><i>성별을 알려줄 수 있어?</i></th>
+              <td bgcolor="#efeff2">
+                <input type="radio" name="gender" id="gender1" />남자&nbsp;&nbsp;
+                <input type="radio" name="gender" id="gender2" checked />여자&nbsp;&nbsp;
+                <input type="radio" name="gender" id="gender3" checked />기타
+              </td>
+            </tr>
+            <tr>
+              <th bgcolor="#CED8FF"><i>혹시 취미가 뭐야?</i></th>
+              <td bgcolor="#efeff2">
+                <input type="checkbox" name="hobby" id="hobby1"/>운동 등, 몸 쓰는 것&nbsp;&nbsp;
+                <input type="checkbox" name="hobby" id="hobby2"/>책읽기 등, 정적인 것<br/>
+                <input type="checkbox" name="hobby" id="hobby3"/>영상 시청&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobby" id="hobby4"/>게임하기&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobby" id="hobby5"/>음악 감상<br/>
+                <input type="checkbox" name="hobby" id="hobby6"/>맛있는 거 먹기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobby" id="hobby7"/>여행 가기<br/>
+                <input type="checkbox" name="hobby" id="hobby8"/>수다떨기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="hobby" id="hobby9"/>기타
+              </td>
+            <tr>
+              <th bgcolor="#CED8FF"><i>가장 좋아하는 색을<br/>알려줄래?</i></th>
+              <td bgcolor="#efeff2">
+                <select name="job" id="job">
+                  <option>선택</option>
+                  <option>빨강색</option>
+                  <option>주황색</option>
+                  <option>노랑색</option>
+                  <option>초록색</option>
+                  <option>파랑색</option>
+                  <option>보라색</option>
+                  <option>흰색</option>
+                  <option>검정색</option>
+                  <option>그외</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th bgcolor="#CED8FF"><i>위에서 못한 네 소개를 해줘<br/>(선택지에 없었던 너의 최애를<br/> 알려줘도 좋아!!)</i></th>
+              <td bgcolor="#efeff2"><textarea rows="5" cols="50" name="content" id="content"></textarea></td>
+            </tr>
+            <tr>
+              <th bgcolor="#CED8FF"><i>좋아하는 그림, 너를<br/>나타내는 이미지를 올려</i></th>
+              <td bgcolor="#efeff2"><input type="file" name="file" id="file" /></td>
+            </tr>
+            <tr>
+              <td bgcolor="#efeff2" colspan="2" align="center">
+                <button type="submit"><a href="myPage.html">제출</a></button> &nbsp;&nbsp;&nbsp;
+                <button type="reset">다시입력</button>
+              </td>
+            </tr>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </table>
+</body>
+</html>
