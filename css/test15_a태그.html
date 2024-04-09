@@ -21,11 +21,16 @@
 
     .atom {
       font-size: 1.5em;
-      line-height: 2em;
+      line-height: 2em;  /* 문단 사이의 거리 */
       /* line-height: 24px; */
-      text-indent: 50px;
+      text-indent: 50px;  /* 들여쓰기 */
       /* letter-spacing: 2.5em;  글자 하나하나가 떨어짐 2.5rem rem은 밑으로 계속 상속 시키겠다 */
       text-shadow: 3px 2px 2px gray;  /* text-shadow 수평, 수직, 블러, 색 */
+    }
+    .ap {
+      background-color: pink;
+      opacity: 0.8;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -36,9 +41,9 @@
   <p><a href="#">연결3</a></p>
   <p><a href="#">연결4</a></p>
   <p class="atom">
+    동해물과 <span class="ap">백두산</span>이 마르고 닳도록 하느님이 보우하사 우리나라 만세  <!--하이퍼링크는 아니지만 js로 버튼 처리 할 수 있음-->
     동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-    동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-    동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
+    동해물과 백두산이 마르고 닳도록 하느님이 보우하사 <span class="ap">우리나라</span> 만세
     동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
     동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
     동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test21.html</title>
+  <style>
+    .aa1, .aa2, .aa3 {
+      background-color: aquamarine;
+      display: inline;
+      /* display: inline-block */
+    }
+    .aa4 {
+      background-color: olivedrab;
+      /* display: none; 자기가 갖고 있던 영역까지 없애버림 데이터가 없어진 것은 아님 */
+      /* visibility: hidden; 공간은 그래로 둠 */
+    }
+    .aa5, .aa6, .aa7 {
+      background-color: orange;
+      border: 1px solid gray;
+      width: 400px;
+    }
+    .bb1 {
+      display: inline; /* 자기 몸만 감쌈 */
+      /* display: block; */
+      /* display: inline-block;  자기 몸 감싸고 + 지정한 영역을 더 가짐 // 모양은 inline으로 두고 밑에 block처럼 공간을 두고 싶은 것 */
+      border: 1px solid red;
+      width: 100px;
+      padding: 10px;
+    }
+    .bb1:hover {
+      background-color: yellowgreen;  /* 메뉴할땐 inline block으로 주는 것이 좋음 */
+    }
+    .bb2 {
+      /* display: inline; */
+      display: block;
+      /* display: inline-block;  자기 몸 감싸고 + 지정한 영역을 더 가짐 // 모양은 inline으로 두고 밑에 block처럼 공간을 두고 싶은 것 */
+      border: 1px solid red;
+      width: 100px;
+      padding: 10px;
+    }
+    .bb2:hover {
+      background-color: yellowgreen;  /* 메뉴할땐 inline block으로 주는 것이 좋음 */
+    }
+    .bb3 {
+      /* display: inline; */
+      /* display: block; */
+      display: inline-block;
+      border: 1px solid red;
+      width: 100px;
+      padding: 10px;
+    }
+    .bb3:hover {
+      background-color: yellowgreen;  /* 메뉴할땐 inline block으로 주는 것이 좋음 */
+    }
+  </style>
+</head>
+<body>
+  <h2>Display 속성</h2>
+  <p>각각의 요소들을 어떻게 보여줄지를 결정한다.</p>
+  <p>
+    속성처리 : visibility(기본값이 보이는 것:) / hidden(감추기)  / inherit(부모요소의 값을 상속받아서 사용)
+  </p>
+  <br/>
+  <p>
+    <b>Display 속성</b>
+    none : <span>화면</span>에서 완전히 사라지게 한다.<br/>
+  </p>
+  <hr/>
+  <h3>사용 예제</h3>
+  <div class="aa1">1.안녕</div>
+  <div class="aa2">2.안녕</div>
+  <div class="aa3">3.안녕</div>
+  <div class="aa4">4.안녕</div>
+  <hr/>
+  <h2>Block / InLine / InLin-Block</h2>
+  <div class="aa5">
+    5.<font color="red" class="bb1">안녕(inline)</font>감사합니다  <!--fonts는 inline 위에 style에 inline을 주는건 의미없음, 같은 줄에 뜨는건 inline, 문단이 나뉘는건 block-->
+  </div>
+  <div class="aa6">
+    6.<span class="bb2"><font color="blue">안녕(Inline-Block)</font></span>
+  </div>
+  <div class="aa7">
+    7.<span class="bb3"><font color="brown">안녕(Block)</font></span>
+  </div>
+</body>
+</html>

@@ -6,10 +6,18 @@
   <title>test7.html</title>
 
   <style type="text/css" rel="stylesheet">
-   ol li ul li {  /* 자손선택자(자식(직계존속)과 다름) */
+  ol li ul li {  /* 자손선택자(자식(직계존속)과 다름) */
     color: aqua;
     list-style-type: none;
     list-style-image: url("../../images/arrowUp.png");
+  }
+  
+  ol > li {
+    color: blueviolet;
+  }
+
+  ol > p {  /* ol의 바로 밑의 자식인 p에만 적용 */
+    color: red;
   }
   </style>
   
@@ -20,6 +28,14 @@
   <ol>
     <li>짜장면</li>
     <li>피자</li>
+    <p>하늘</p>
+    <p>하루
+      <ol>
+        <li>하늘색</li>
+        <li>주황색</li>
+        <li>빨간색</li>
+      </ol>
+    </p>
     <li>과일
       <ul>
         <li>딸기</li>

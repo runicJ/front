@@ -1,0 +1,51 @@
+/* text28.css */
+body {
+  margin: 0px;
+  font-size: 0.8em;
+}
+.container {
+  background-color: bisque;
+  height: 100vh;  /* 100%랑 비슷하지만 여백 남는 부분까지 싹다 활용 */
+  display: flex;  /* 기본이 행 기준 */
+
+  flex-direction: row;
+  flex-wrap: wrap;  /* 아래로 떨어뜨림 */
+  justify-content: flex-start;  /* 왼쪽부터 시작함 */
+  order: 2;
+}
+
+.item {
+  width: 150px;
+  height: 150px;
+  border: 1px solid gray;
+  text-align: center;
+}
+
+.item1 {
+  background-color: olive;
+  order: 1;
+  flex-basis: 30%;
+  flex-grow: 1;
+  /* flex-shrink: 1; */
+}
+.item2 {
+  background-color: skyblue;
+  order: 2;
+  flex-basis: 20%;
+  flex-grow: 2;
+  /* flex-shrink: 2; */
+}
+.item3 {
+  background-color: maroon;
+  order: 3;
+  flex-grow: 3;
+  /* flex-shrink: 3; */
+}
+
+.item4 {background-color: rgb(167, 219, 165);}
+.item5 {background-color: rgb(25, 12, 73);}
+.item6 {background-color: rgb(196, 128, 27);}
+.item7 {background-color: rgb(22, 100, 124);}
+.item8 {background-color: rgb(174, 218, 15);}
+.item9 {background-color: rgb(82, 10, 10);}
+.item10 {background-color: rgb(82, 131, 134);}

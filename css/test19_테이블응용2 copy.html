@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test19.html</title>
+  <style>
+    table {
+      width: 400px;
+      height: 300px;
+      font-size: 20px;
+      color: greenyellow;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid gray;
+      padding: 10px 0px;
+      text-align: center;
+    }
+    thead {
+      background-color: slateblue;
+    }
+    tbody {
+      background-color: peachpuff;
+    }
+    tfoot {
+      background-color: salmon;
+    }
+    .atom {
+      font-weight:bolder;
+    }
+    tr:hover {
+      background-color: indigo;
+    }
+    tr:nth-child(2n) {  /*nth 한줄*/
+      color: powderblue;
+    }
+    tr:nth-child(2n+1) {
+      background-color: pink;
+    }
+    tr:first-child {  /*첫째자식*/
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>표 연습</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>1</th>
+            <th class="atom">2</th>
+            <th>3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4</td>
+            <td class="atom">5</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td class="atom">8</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td class="atom">11</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td class="atom">14</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td class="atom">5</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td class="atom">8</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td class="atom">11</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td class="atom">14</td>
+            <td>15</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>16</td>
+            <td class="atom">17</td>
+            <td>18</td>
+          </tr>
+        </tfoot>
+      </table>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* text28.css */
+body {
+  margin: 0px;
+  font-size: 0.8em;
+}
+.container {
+  background-color: bisque;
+  height: 100vh;  /* 100%랑 비슷하지만 여백 남는 부분까지 싹다 활용 */
+  display: flex;  /* 기본이 행 기준 */
+
+  /* flex-direction: row;  flex grid의 기본방향(행 기준) */
+  /* flex-direction: column; */
+  /* flex-direction: row-reverse; 뱡향을 역방향으로 배치 */
+
+  /* flex-wrap: wrap;  균등하게 화면의 50%로 내려감 */
+  /* flex-wrap: wrap-reverse */
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;  /* 시작이 왼쪽부터 */
+  /* justify-content: flex-end; */
+  /* justify-content: center; */
+
+  /* justify-content: space-around;  네모사이의 반이 양끝 길이 */
+  /* justify-content: space-between;  양쪽 끝을 붙이고 간격을 띄움 */
+  justify-content: space-evenly;  /*양쪽 끝이든 네모 사이든 간격이 같음*/
+  
+  /* align-items: center; */
+  align-items: baseline;
+
+  align-content: space-around;
+  /* align-content: space-between;  줄일때 위 아래 먼저 주고 */
+}
+
+.item {
+  width: 70px;
+  height: 70px;
+  border: 1px solid gray;
+  text-align: center;
+}
+
+.item:nth-child(1) {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;  /* height와 line-height의 값을 동일하게 주면 가운데 맞출 수 있음(수직 가운데가 없음) */
+}
+
+.item1 {background-color: rgb(78, 16, 136);}
+.item2 {background-color: rgb(111, 94, 128);}
+.item3 {background-color: rgb(177, 18, 169);}
+.item4 {background-color: rgb(167, 219, 165);}
+.item5 {background-color: rgb(25, 12, 73);}
+.item6 {background-color: rgb(196, 128, 27);}
+.item7 {background-color: rgb(22, 100, 124);}
+.item8 {background-color: rgb(174, 218, 15);}
+.item9 {background-color: rgb(82, 10, 10);}
+.item10 {background-color: rgb(82, 131, 134);}
