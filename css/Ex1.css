@@ -1,0 +1,678 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tilt Neon", "Malgun-Gothic", "sans-serif";
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+header {
+    position: fixed;
+    color: #F0C420;
+    top: 13px;
+    left: 10px;
+    z-index: 1;
+    width: 100%;
+    padding: 0.5em;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
+
+header .container nav ul {
+    display: flex;
+}
+
+header .container nav ul li {
+    padding: 10px;
+}
+
+header .container a {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+header .container h1 a {
+    font-size: 2.1em;
+    font-weight: bold;
+    color: #FF8C00;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header .container nav ul li a {
+    font-size: 1.3em;
+    font-weight: 400;
+    color: #FFCC21;
+    margin-right: 10px;
+    line-height: 1.5em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+header .container nav ul li a:hover {
+    font-size: 1.4em;
+    font-weight: 500;
+    background-color: #275446;
+    opacity: 0.7;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    color: #F5f5dc;
+    background: linear-gradient(rgba(240,196,32,0.1), rgba(245,245,220,0.1)), url("images/forest.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+main h4 {
+    font-size: 2em;
+}
+
+main h2 {
+    font-size: 3em;
+    margin: 30px 0;
+    letter-spacing: 3px;
+}
+
+main p {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.4em;
+}
+
+main button.think {
+    background-color: transparent;
+    border: 3px double #F5f5dc;
+    border-radius: 18px;
+    padding: 10px 27px;
+    margin-top: 30px;
+    color: #F5f5dc;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+main button.think:hover {
+    background-color: #F0C420;
+}
+
+main button.smile {
+    background-color: transparent;
+    border: none;
+    color: #F5f5dc;
+    font-size: 2em;
+    position: absolute;
+    bottom: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: upDown 1s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes upDown{
+    0%{
+        bottom: 1em;
+        transform: scaleY(0.9);
+    }
+    50%{
+        bottom: 1.5em;
+        transform: scaleY(1);
+        color: #f1d570;
+    }
+    100%{
+        bottom: 1em;
+        transform: scaleY(0.9);
+    }
+}
+
+main h2 span {
+    color: #F0C420;
+}
+
+main h2 span::after{
+    content:"";
+    height:40px;
+    width:3px;
+    background-color:#F5f5dc;
+    display:inline-block;
+    animation: cursor .8s ease-in-out infinite;
+}
+
+@keyframes cursor{
+    0%{
+        opacity:0.9;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+section {
+    color: #392f31;
+    padding: 4em 0;
+}
+
+section:nth-child(2n){
+    background-color:#F5f5dc;
+}
+
+section .title{
+    margin-bottom: 3em;
+}
+
+section .title h4{
+    font-size: 1.3em;
+    color:#d2691e;
+    position: relative;
+}
+
+section .title h2{
+    font-size: 3em;
+}
+
+section .title p{
+    font-size: 1.2em;
+}
+
+section .about-content::after{
+    content:"";
+    clear:both;
+    display:block;
+}
+
+section .about-content .left{
+    width:50%;
+    float:left;
+}
+
+section .about-content .left img{
+    max-width:100%;
+}
+
+section .about-content .right{
+    width:50%;
+    float:left;
+    padding: 10px 20px;
+}
+
+section .about-content .right h3{
+    font-size:2.25em;
+    margin-bottom:1rem;
+}
+
+section .about-content .right h3 b{
+    color:#d2691e;
+}
+
+section .about-content .right p{
+    font-size:1.15em;
+    margin:1rem 0;
+}
+
+section .about-content .right .social a{
+    font-size: 2em;
+    margin-right: 0.3em;
+}
+
+.img-item:hover {
+    opacity: 0.8;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 17px;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    font-family: "IBM Plex Sans KR", "Malgun-Gothic", "sans-serif";
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f0e68c;
+    color: #392f31;
+    text-align: justify;
+    padding: 20px 10px 10px 10px;
+}
+
+footer h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.footer-company, .footer-social, .footer-bottom {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin-right: 3%;
+}
+
+footer img {
+    width: 20px;
+    height: auto;
+}
+
+.footer-company {
+    margin-right: 0;
+}
+
+.footer-company li, .footer-social li {
+    margin-bottom: 3px;
+}
+
+.footer-bottom {
+    width: 100%;
+    padding: 0px;
+    font-size: 0.9em;
+    list-style: none;
+    margin-top: 30px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    /* color: rgb(165, 165, 165); */
+}
+
+.footer-bottom li + li::before {
+    content: "";
+    border-left: 1px solid rgba(39, 38, 38, 0.678);
+    margin: 0px 16px;
+}
+
+.ad-logo {
+    float: right;
+    width: 130px;
+    height: auto;
+}
+
+/* .ad-img {
+    display: flex;
+    align-items: center;
+} */
+
+.ad-main {
+    display: flex;
+}
+
+.ad-img img {
+    flex: 40%;
+    float:right;
+    width: 30%;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.ad-content article {
+    flex: 1
+}
+
+.ad-content h3 {
+    font-size: 2.25em;
+    margin-bottom: 0.5em;
+}
+
+.ad-content h3 b {
+    color: #d2691e;
+}
+
+.ad-content p {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+}
+
+.ad-content ol {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+}
+
+.ad-content ol li {
+    list-style: circle;
+    margin-bottom: 2px;
+    text-indent: 5px;
+}
+
+@media screen and (max-width:599px) {
+    * { 
+        font-weight: 300;
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 100%;
+    }
+    
+    header {
+        width: 90%;
+        max-width: 100%;
+        position: fixed;
+        color: #F0C420;
+        top: 10px;
+        left: 5px;
+        z-index: 1;
+        width: 100%;
+        padding: 0.3em;
+    }
+    
+    header .container h1 a {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #FF8C00;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    header .container nav ul li a {
+        font-size: 1em;
+        font-weight: 300;
+        color: #FFCC21;
+        margin-right: 10px;
+        line-height: 1.5em;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    header .container nav ul li a:hover {
+        font-size: 1.1em;
+        font-weight: 400;
+        background-color: #275446;
+        opacity: 0.7;
+    }
+    
+    main {
+        width: 100%;
+        height: 100vh;
+        color: #F5f5dc;
+        background: linear-gradient(rgba(240,196,32,0.1), rgba(245,245,220,0.1)), url("images/forest.jpg");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    main h4 {
+        font-size: 2em;
+    }
+    
+    main h2 {
+        font-size: 3em;
+        margin: 30px 0;
+        letter-spacing: 3px;
+    }
+    
+    main p {
+        max-width: 500px;
+        margin: 0 auto;
+        font-size: 1.4em;
+    }
+    
+    main button.think {
+        background-color: transparent;
+        border: 3px double #F5f5dc;
+        border-radius: 18px;
+        padding: 10px 27px;
+        margin-top: 30px;
+        color: #F5f5dc;
+        font-size: 1.3em;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    main button.think:hover {
+        background-color: #F0C420;
+    }
+    
+    main button.smile {
+        background-color: transparent;
+        border: none;
+        color: #F5f5dc;
+        font-size: 2em;
+        position: absolute;
+        bottom: 1em;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: upDown 1s ease-in-out infinite;
+        cursor: pointer;
+    }
+    
+    @keyframes upDown{
+        0%{
+            bottom: 1em;
+            transform: scaleY(0.9);
+        }
+        50%{
+            bottom: 1.5em;
+            transform: scaleY(1);
+            color: #f1d570;
+        }
+        100%{
+            bottom: 1em;
+            transform: scaleY(0.9);
+        }
+    }
+    
+    main h2 span {
+        color: #F0C420;
+    }
+    
+    main h2 span::after{
+        content:"";
+        height:40px;
+        width:3px;
+        background-color:#F5f5dc;
+        display:inline-block;
+        animation: cursor .8s ease-in-out infinite;
+    }
+    
+    @keyframes cursor{
+        0%{
+            opacity:0.9;
+        }
+        100%{
+            opacity:0;
+        }
+    }
+    
+    section {
+        color: #392f31;
+        padding: 4em 0;
+    }
+    
+    section:nth-child(2n){
+        background-color:#F5f5dc;
+    }
+    
+    section .title{
+        margin-bottom: 3em;
+    }
+    
+    section .title h4{
+        font-size: 1.3em;
+        color:#d2691e;
+        position: relative;
+    }
+    
+    section .title h2{
+        font-size: 3em;
+    }
+    
+    section .title p{
+        font-size: 1.2em;
+    }
+    
+    section .about-content::after{
+        content:"";
+        clear:both;
+        display:block;
+    }
+    
+    section .about-content .left{
+        width:50%;
+        float:left;
+    }
+    
+    section .about-content .left img{
+        max-width:100%;
+    }
+    
+    section .about-content .right{
+        width:50%;
+        float:left;
+        padding: 10px 20px;
+    }
+    
+    section .about-content .right h3{
+        font-size:2.25em;
+        margin-bottom:1rem;
+    }
+    
+    section .about-content .right h3 b{
+        color:#d2691e;
+    }
+    
+    section .about-content .right p{
+        font-size:1.15em;
+        margin:1rem 0;
+    }
+    
+    section .about-content .right .social a{
+        font-size: 2em;
+        margin-right: 0.3em;
+    }
+    
+    .img-item:hover {
+        opacity: 0.8;
+    }
+    
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 17px;
+    }
+    
+    .grid-item img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    footer {
+        font-family: "IBM Plex Sans KR", "Malgun-Gothic", "sans-serif";
+        font-weight: 400;
+        font-style: normal;
+        background-color: #f0e68c;
+        color: #392f31;
+        text-align: justify;
+        padding: 20px 10px 10px 10px;
+    }
+    
+    footer h3 {
+        font-size: 1.2em;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    
+    .footer-company, .footer-social, .footer-bottom {
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+        margin-right: 3%;
+    }
+    
+    footer img {
+        width: 20px;
+        height: auto;
+    }
+    
+    .footer-company {
+        margin-right: 0;
+    }
+    
+    .footer-company li, .footer-social li {
+        margin-bottom: 3px;
+    }
+    
+    .footer-bottom {
+        width: 100%;
+        padding: 0px;
+        font-size: 0.9em;
+        list-style: none;
+        margin-top: 30px;
+        margin-bottom: 32px;
+        display: flex;
+        align-items: center;
+        /* color: rgb(165, 165, 165); */
+    }
+    
+    .footer-bottom li + li::before {
+        content: "";
+        border-left: 1px solid rgba(39, 38, 38, 0.678);
+        margin: 0px 16px;
+    }
+    
+    .ad-logo {
+        float: right;
+        width: 130px;
+        height: auto;
+    }
+    
+    /* .ad-img {
+        display: flex;
+        align-items: center;
+    } */
+    
+    .ad-main {
+        display: flex;
+    }
+    
+    .ad-img img {
+        flex: 40%;
+        float:right;
+        width: 30%;
+        height: 100%;
+        margin-right: 10px;
+    }
+    
+    .ad-content article {
+        flex: 1
+    }
+    
+    .ad-content h3 {
+        font-size: 2.25em;
+        margin-bottom: 0.5em;
+    }
+    
+    .ad-content h3 b {
+        color: #d2691e;
+    }
+    
+    .ad-content p {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+    }
+    
+    .ad-content ol {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+    }
+    
+    .ad-content ol li {
+        list-style: circle;
+        margin-bottom: 2px;
+        text-indent: 5px;
+    }
+}

@@ -1,0 +1,174 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/* html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+} */
+/* HTML5 display-role reset for older browsers */
+/* article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+} */
+
+/* 다른 사람거 */
+@charset "utf-8";
+
+/* 국문 */
+/* font-weight 400 / 600 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
+/* 영문 */
+/* font-weight 500 / 700 */
+@import url("https://use.typekit.net/sig7gds.css");
+
+.en {font-family: acumin-pro, sans-serif; font-weight: 400;}
+.pc-hide {display: none;}
+.mo-hide {display: block;}
+
+*{margin: 0; padding: 0; vertical-align: top; border: 0;box-sizing:border-box;word-break:keep-all;}
+html {overflow-y: scroll;}
+html,body {width: 100%; height: 100%; font-size: calc( 12px + 0.1vw ); line-height: 1.3; font-family:Pretendard, 'Malgun Gothic', sans-serif; font-weight: 400; color: #fff; background: transparent;letter-spacing:-0.5px;}
+::selection {background:#DBE7FF;color:#000}
+.none {display: none;}
+.full {width: 100%; height: 100%;}
+.blind {text-indent:-9999px; display: none; overflow: hidden; line-height: 0; font-size: 0;}
+.fixed {overflow: hidden;}
+
+/* HTML5 새 요소 초기화 */
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+textarea {resize: none;}
+em, address, main {font-style: normal;}
+
+table, input, textarea, select, button, pre {font-size: 1rem; line-height: 1.3; color: #000; border-radius: 0; outline: none; border: none; background-color: transparent; box-shadow: none; padding: 0; margin: 0;}
+pre {white-space: pre-line;}
+ul,ol,li {list-style: none; padding: 0; margin: 0;}
+input, select, button {vertical-align: middle;}
+button, select {cursor: pointer; text-align: center;}
+table, th, td {border-spacing: 0; border-collapse: collapse; vertical-align: middle; text-align: left;}
+input {-webkit-appearance: none;-moz-appearance: none; appearance: none;}
+input:focus{border-bottom:1px solid #000 !important}
+textarea::placeholder, input::placeholder{color:#ccc}
+
+h1, h2, h3, h4, h5, h6 {font-size: 1rem;}
+a,a:link,a:hover,a:focus,a:active,a:visited {outline: none;}
+a:link {font-size: 1rem; color: #000; text-decoration: none;}
+a:visited {font-size: 1rem; color: #000; text-decoration: none;}
+a:hover {font-size: 1rem; color: #000; text-decoration: none;}
+a:active {font-size: 1rem; color: #000; text-decoration: none;}
+a:focus {font-size: 1rem; color: #000; text-decoration: none;}
+hr {display: none; height: 0;}
+.input_text {padding: 3px; border: 1px solid #d4d4d4;}
+.select_type {padding: 2px; border: 1px solid #d4d4d4;}
+.content_text {font-size: 0.9rem;}
+img{width:100%;}
+
+/* 박스 */
+.clfix:after,.clfix:before{line-height:0;display:table;content:''}
+.clfix:after{clear:both}
+.nolist-left::after, .nolist-right::after, .nolist-center::after, .nolist::after, .clear::after {content: ''; display: block; clear: both; width: 0; height: 0;}
+.nolist-center {text-align: center; font-size: 0;}
+.nolist-center>* {display: inline-block; font-size: 1rem;}
+.nolist-left>* {float: left;}
+.nolist-right>* {float: right;}
+.left {float: left;}
+.right {float: right;}
+
+.clear>.col-2, .nolist>.col-2, .nolist-left>.col-2, .nolist-right>.col-2, .nolist-center>.col-2 {width: 50%;}
+.clear>.col-3, .nolist>.col-3, .nolist-left>.col-3, .nolist-right>.col-3, .nolist-center>.col-3 {width: 33.3%;}
+.clear>.col-4, .nolist>.col-4, .nolist-left>.col-4, .nolist-right>.col-4, .nolist-center>.col-4 {width: 25%;}
+.clear>.col-5, .nolist>.col-5, .nolist-left>.col-5, .nolist-right>.col-5, .nolist-center>.col-5 {width: 20%;}
+.clear>.col-6, .nolist>.col-6, .nolist-left>.col-6, .nolist-right>.col-6, .nolist-center>.col-6 {width: 16.66%;}
+.clear>.col-7, .nolist>.col-7, .nolist-left>.col-7, .nolist-right>.col-7, .nolist-center>.col-7 {width: 14.28%;}
+.clear>.col-8, .nolist>.col-8, .nolist-left>.col-8, .nolist-right>.col-8, .nolist-center>.col-8 {width: 12.5%;}
+
+/* .sec .cage {margin: 0 auto; padding: 0 80px; width: 100%; height: auto; box-sizing: border-box;} */
+/* .sec .cage {margin: 0 auto; padding: 0 80px; width: 100%; height: 51.5vw; box-sizing: border-box;} */
+.sec .cage {margin: 0 auto; padding: 0 80px; width: 100%; height: 51.5vw; box-sizing: border-box; transition: .2s;}
+.inner {width: 100%; height: 100%; padding: 30px 20px; box-sizing: border-box; display: block;}
+.dim {display: none; position: fixed; left: 0; top: 0; z-index: 9999998; width: 100%; height: 100%; background: rgba(0,0,0,.7);}
+
+/* bg 이미지 초기화 */
+.bg, .image {background-size: contain; background-repeat: no-repeat; background-position: center center;}
+.image {min-width: 1rem; min-height: 1rem;}
+.bg.cover {background-size: cover;}
+.bg.auto {background-size: auto;}
+
+ /* 중앙정렬 */
+.relative {position: relative;}
+.vhcenter {position: absolute; top: 50%; left:50%; transform: translate(-50%,-50%); vertical-align: middle;} /* 가로세로 */
+.hcenter {position: absolute; left: 50%; transform: translateX(-50%); vertical-align: middle;} /* 가로 */
+.vcenter {position: absolute; top: 50%; transform: translateY(-50%); vertical-align: middle;} /* 세로 */
+
+.Wbar {display: inline-block; width: 30px; height: 2px; background-color: #333; margin: 20px 0;}
+
+.ellipsis-row {text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; overflow: hidden; width: 100%;}
+.ellipsis-many {overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; height: 3em; line-height: 1.5em;}
+
+/* font weight */
+.Tbold {font-weight: 700 !important;}
+.Tregular {font-weight: 400 !important;}
+.Tlight {font-weight: 300 !important;}
+
+/* font color */
+.col_wh, a.col_wh {color: #fff !important;}
+.col_bl, a.col_bl {color: #000 !important;}
+.color-blue {color: #4676fd !important;}
+
+/* background color */
+.bg_wh {background-color: #fff !important;}
+.bg_bl {background-color: #000 !important;}
+
+/* icon 관련 */
+.icon_wrap {display: inline-block; width: 100%;}/* max-width로 크기 설정 */
+.icon_wrap > img {width: 100%;height: auto;}
+
+/* image 관련 */
+.img_wrap {position: relative; display: block; font-size: 0;}/* width로 크기 설정 */
+.img_wrap > img {position: relative; z-index: 1; width: 100%; height: auto;}
+.img_dim {position: absolute; z-index: 2; left: 0; top: 0; width: 100%; height: 100%; background: #000; opacity: 0.6;}
+
+@media only screen and (max-width: 1024px) {
+  .sec .cage {padding: 0 40px; height: 43.5vw;}
+  .pc-hide {display: block;}
+  .mo-hide {display: none;}
+}
+
+@media only screen and (max-width: 375px) {
+  .sec .cage {padding: 0 25px; min-height: 60vh; height: auto;}
+}
