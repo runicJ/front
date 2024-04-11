@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test5.html</title>
+  <script>
+    'use strict';
+
+    atom1();
+
+    function atom1() {
+      console.log("100 + 200 : ", 100+200);  // , 기준으로 앞뒤 따로 연산
+      console.log("100 - 200 : ", 100-200);
+      console.log("100 * 200 : ", 100*200);
+      console.log("100 / 200 : ", 100/200);
+      console.log("100 + 200 * 2 : ", 100+200*2);
+      console.log("문서 : ", 100);
+      console.log("문서 : " + 100 + 100);  // + 같이 연산한 것
+      console.log("문서 : " + (100 + 100));  //  먼저 연산(가로 중요성)
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

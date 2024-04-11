@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test3.html</title>
+  <script>
+    'use strict';  // 변수 선언 필수 지정
+
+    var aa = 100;
+    console.log("1.aa : ", aa);
+    var aa = 3.14;
+    console.log("2.aa : ", aa);  // 같은 변수를 계속 선언 해도 가능
+    aa = "Korea";
+    console.log("3.aa : ", aa);
+
+    let bb = 200;
+    console.log("1.bb : ", bb);
+    //let bb = 3.141592;
+    //console.log("2.bb : ", bb);  // 같은 변수로 다시 선언 불가
+    bb = 'Seoul';
+    console.log("3.bb : ", bb);
+
+    const cc = 300;
+    console.log("1.cc : ", cc);
+    // cc = 3.14;
+    // console.log("2.cc : ", cc);  // 상수의 개념, 값을 선언 해두면 못 바꿈(에러)
+
+    // dd = 400;  // 선언x 에러x(위에 use strict 사용하면 에러)
+    // console.log("dd : ", dd);
+  </script>
+</head>
+<body>
+  <h2>본문입니다.</h2>
+</body>
+</html>

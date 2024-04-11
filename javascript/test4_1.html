@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test4_1.html</title>
+  <script>
+    document.write("안녕111<br/>");
+    
+    atom1();  // js에서는 메모리에 function을 먼저 올려둠, 실행됨.
+
+    function atom1() {  // 자바 메소드 함수 같은 리턴타입x 접근제한자 대신 function  // 익명함수(이름 안주고 가능, atom1x)
+      document.write("안녕22222<br/>");
+    }
+
+    // atom1();
+    // atom2();  // body쪽은 안봄, script 안에 있는 것만 먼저 올려둠
+  </script>
+</head>
+<body>
+  <h2>이곳은 본문</h2>
+
+  <script>  // 스크립트 언어기 때문에 써줘야함
+    function atom2() {  // 같은 이름 2개 안됨. 에러는 아니지만 덮어쓴 개념
+      document.write("안녕33333<br/>");
+    }
+  </script>
+</body>
+</html>

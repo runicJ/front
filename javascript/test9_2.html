@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test9_2.html</title>
+  <script>
+    'use strict';
+
+    function calc() {
+      let su = prompt("수를 입력하세요?");
+      // let res = su + 100;
+      // let res = parseInt(su) + 100;  //가능
+      // let res = Number(su) + 100;  //가능
+      let res = eval(su) + 100;  // eval함수 : 
+      alert("res : " + res);  // alert는 ,가 아니라 +  // 웹에서 입력되는 것은 숫자든 문자든 전송하면 문자로 인식(숫자로 바꿔 써야함)
+    }
+
+  </script>
+</head>
+<body>
+  <h2>본문</h2>
+  <p>
+    <input type="button" value="계산" onclick="calc()"/>
+  </p>
+</body>
+</html>

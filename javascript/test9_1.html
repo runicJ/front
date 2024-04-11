@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test9_1.html</title>
+  <script>
+    'use strict';
+
+    function msg() {
+      alert("메시지 출력");
+    }
+    function msg2(su) {
+      alert("su : " + su);
+    }
+    function msg3() {
+      let su = prompt("수를 입력하세요!");  // 메시지 출력하고 값을 입력받는 것
+      alert("su : " + su);  // 위에 선언 안했을때 su가 정의 되어 있지 않은데 출력해서 에러
+    }
+    function msg4() {
+      let ans = confirm("작업을 계속 하시겠습니까?(Y/N)");
+      // alert("ans : " + ans);
+      if(ans) {
+        alert("작업을 계속 진행합니다.");
+      }
+      else {
+        alert("작업을 마칩니다.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>본문</h2>
+  <p>
+    <input type="button" value="메시지출력" onclick="msg()"/>
+    <input type="button" value="메시지출력2" onclick="msg2(100)"/>
+  </p>
+  <p>
+    <input type="button" value="메시지출력후 값받기" onclick="msg3()"/>
+    <input type="button" value="계속할까요?" onclick="msg4()"/>
+  </p>
+</body>
+</html>

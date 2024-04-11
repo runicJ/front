@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test2.html</title>
+  <script>
+    document.write("<p>안녕1</p>");  // 명령어든 문자든 ""로 감싸기(''도 관계없음, 통일만 해주면 됨)
+    document.write('<font size="5" color="red">안녕2</font><br/>');  // 안쪽 "" 안써도 오류x 그러나 왠만하면 써주기(안밖만 다르게)
+    document.write("<p style='text-align:center'>안녕3</p>");
+    document.write("<p>안녕's</p>");
+    document.write('<p>안녕\'s</p>');  // \가 제어코드 기억하기
+    console.log("반갑습니다.1");  // f12 console에 출력
+    console.clear();  // 위에 console에 작성된 것 지워짐, 밑에서부터 출력
+    console.log("반갑습니다.2");
+    console.log("clg");  // clg
+    console.clear();  // ccl(확장팩으로 단축키 가능)  // js를 에러가 나옴(f12에서 확인가능, f12의 라인번호와 여기 라인번호가 100% 일치x)
+
+    var atom = 100;  // 변수를 주고(var은 어떤 타입이든 다 받아줌)
+    console.log("1.atom : ", atom);  // console 창을 보면 값이 출력된 것이 나옴
+    // alert("메시지 출력");
+    alert("atom : " + atom);  // sysout 같은 개념(console.log도)  // 실행순서 중요함(f12로보면됨, 위에 console이 먼저 실행, clear나오고 지워지고 다시 console1이 실행 alert기준으로 밑에 document 만나서 멈춤, 메시지창 확인 후 밑에 console2 실행)
+    document.write("alert명령 이후 출력???");
+    console.log("2.atom : ", atom);
+  </script>
+</head>
+<body>
+  <h3>이곳은 body태그 안쪽입니다.</h3>
+</body>
+</html>

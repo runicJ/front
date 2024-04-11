@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test4_3.html</title>
+  <script>
+    document.write("안녕111<br/>");
+    
+    atom1();  // js에서는 메모리에 function을 먼저 올려둠, 실행됨.
+
+    function atom1() {  // 자바 메소드 함수 같은 리턴타입x 접근제한자 대신 function  // 익명함수(이름 안주고 가능, atom1x)
+      // document.write("atom1함수 : 안녕22222<br/>");
+      alert("atom1함수 : 안녕22222");
+    }
+
+    // atom1();
+    // atom2();  // body쪽은 안봄, script 안에 있는 것만 먼저 올려둠  // promise 비동기 함수, 먼저 사용할건지
+  </script>
+</head>
+<body>
+  <h2>이곳은 본문</h2>
+
+  <input type="button" value="atom1" onclick="atom1()" />  <!--button 타입 button은 자바스크립트 호출, submit server에 제출, reset 다시쓰기-->
+  <!-- <input type="button" value="atom2" onclick="atom2()" /> -->
+  <button type="button" onclick="atom2()">atom2호출</button>  <!--type안써도 관계없음-->
+  <button type="button" onclick="atom3()">atom3호출</button>
+
+  <script>  // 스크립트 언어기 때문에 써줘야함
+    function atom2() {  // 같은 이름 2개 안됨. 에러는 아니지만 덮어쓴 개념
+      // document.write("atom2함수 : 안녕33333<br/>");
+      alert("atom2함수 : 안녕33333");
+    }
+
+    function atom3() {  // 같은 이름 2개 안됨. 에러는 아니지만 덮어쓴 개념
+      atom1();
+      atom2();
+      alert("작업종료!!");
+    }
+  </script>
+</body>
+</html>

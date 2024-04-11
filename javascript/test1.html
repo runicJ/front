@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>text1.html</title>
+  <script src="test1.js"></script>  <!--절차식 언어 - 수행은 폭포식 위에서 아래 순서대로-->
+  <script type="text/javascript" language="javascript">  //type="text/css"  // css처럼 인라인의 개념이 없음
+    // 한줄주석
+    /*
+      여러줄 주석
+    */
+    document.write("안녕하세요1!!<br/>");
+  </script>
+</head>
+<body>
+  <h2>Body태그 안쪽입니다.</h2>
+
+  <script>
+    document.write("안녕하세요3~~~~~~~~~~~~~~~");  // form태그의 경우 body에 위치해 있기 때문에 작성 이전에 내/외국인 체크 같은 것을 먼저 하게 될 경우 위에script가 먼저 시행되기 떄문에 밑에 form태그를 먼저 실행할 수 없다 그러므로 밑에 스크립트를 사용해야한다(명령어 따로 있음)
+  </script>
+</body>
+</html>

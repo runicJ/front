@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test10_2.html</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    'use strict';
+
+    function myFunc() {
+      let name = document.myform.name.value;
+      let age = document.myform.age.value;
+      let gender = document.myform.gender.value;
+      let address = document.myform.address.value;
+      // alert("성명: "+name+" , 나이: "+age+" , 성별: "+gender+" , 주소: " + address);
+
+      if(name.trim() == "") {  // .equals 아니고 ==(데이터), ===(동등비교, 타입까지 비교) 사용
+        alert("성명을 입력하세요!");
+        document.myform.name.focus();  //focus는 함수, ()  // document 생략가능
+      }
+      else if(age.trim() == "") {
+        alert("나이를 입력하세요!");  // type이 number이라서 숫자 아니면 걸러줌  // isNumber
+        myform.age.focus();
+      }
+      else if(address.trim() == "") {
+        alert("주소를 입력하세요!");
+        myform.address.focus();
+      }
+      else {
+        myform.submit();  // 버튼에 submit을 주는게 아님
+      }
+    }
+  </script>
+  <style>
+    th {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+  <h2 class="text-center">본문</h2>
+  <form name="myform">  <!--window.document.myform.name => 성명 .age => 나이-->
+    <table class="table table-bordered">
+      <tr>
+        <th class="table-dark"><label for="name">성명</label></th>
+        <td><input type="text" name="name" id="name" placeholder="이름을 입력하세요." class="form-control" autofocus required /></td>  <!--value적으면 그게 서버로 넘어가는 값 // label for="id" 문자 눌러도 해당 input창으로 이동 // 자동 커서, 필수 입력 // placeholder 자동입력-->
+      </tr>
+      <tr>
+        <th class="table-dark"><label for="age">나이</label></th>
+        <td><input type="number" name="age" id="age" value="20" class="form-control" /></td>
+      </tr>
+      <tr>
+        <th class="table-dark"><label for="gender">성별</label></th>
+        <td>
+          <input type="radio" name="gender" id="gender" value="남자" />남자 &nbsp;  <!--무조건 하나 넘어오므로-->
+          <input type="radio" name="gender" id="gender" value="여자" checked />여자
+        </td>
+      </tr>
+      <tr>
+        <th class="table-dark"><label for="address">주소</label></th>
+        <td><input type="text" name="address" id="address" class="form-control" /></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-center">
+          <input type="button" value="전 송" onclick="myFunc()" class="btn btn-success" /> &nbsp;  <!--type submit을 여기서 안쓰고 위에서 씀 // submit 쓰면 바로 서버로 넘어가기 때문에 위험(체크를 완벽하게 했을때만 넘겨야함)-->
+          <input type="reset" value="다시입력" class="btn btn-warning" /> &nbsp;
+          <input type="button" value="돌아가기" class="btn btn-primary" />
+        </td>
+      </tr>
+  </table>
+  </form>
+</div>
+</body>
+</html>
+
+<!-- f12 켜야 오류 확인 가능(에러가 빨간색 뜨면 서버로 값이 안감) -->
