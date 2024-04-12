@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test02.html</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    'use strict';  // 사용할 변수를 선언을 하고 사용해달라(ECMA6부터)
+
+    let cnt = 0;  // 하나씩 여러개 생성(전역변수)
+
+    // 호이스팅(hoisting)
+    print1();
+    // let res = atom;  // 위에서 아래로 아직 등장하지 않음
+    //일반함수
+    function print1() {
+      cnt++;
+      console.log(`${cnt}.안녕하세요.`);  // font에서만 // ``을 쓰면 +를 대치
+      // console.log(cnt+".안녕하세요.");
+      // console.log("안녕하세요.");
+    }
+
+    let atom = 100;
+    let res = atom;
+
+    // 매개값을 받아서 처리하는 함수
+    function print2(msg) {
+      cnt++;
+      console.log(`${cnt}.${msg}`);
+      // console.log(msg);
+      // const json = JSON.stringify(msg);  // stringify라는 메소드 // object 변수를 js의 string으로  // [" " : " "] -> {" " : " "} -> {   : " "}
+      // console.log(json);
+    }
+
+    // 매개값으로 객체(object:'키'와'값'으로 구성되는 자료형)를 전달받아서 처리하는 함수
+    function print3(obj) {
+      console.log(obj);
+      console.log(obj.name);
+      console.log(obj.age);
+      print2(obj.name);
+      print2(obj.age);
+    }
+    
+    const btom = {name: '홍길동', age:25};  // const final static   //{객체} java에서 hash같은것
+    print3(btom);
+
+    // print1();
+
+    // Default Parameters : 매개변수에 값이 전달되지 않으면 기본값으로 대치할 수 있다.
+    function print4(msg, atom) {
+      cnt++;
+      console.log(`${cnt}.${msg}, atom : ${atom}`);  // ``은 문자로 간주 // 헷갈리면 따당으로
+    }
+
+    function print5(msg, atom="감사합니다.") {  // undefined 나오면 이상하니까 매개값 설정해주는 것도 좋음
+      cnt++;
+      console.log(`${cnt}.${msg}, atom : ${atom}`);
+    }
+
+    // 여러개의 매개값이 넘어올 경우...(배열과 같은 자료)
+    function print6(su1, su2, su3, su4, su5) {
+      console.log(`${su1},${su2},${su3},${su4},${su5}`);
+    }
+
+    function print7(...args) {  // 값이 여러개 넘어오면 배열로 처리함 ...(개수와 관계없이) // 자바와 같음 '...' 배열 변수
+      console.log('');  // 한줄 떨어짐
+      // 일반 for문
+      for(let i=0; i<args.length; i++) {  // int가 아님
+        cnt++;
+        console.log(`${cnt}.${args[i]}`);
+      }
+
+      console.log('');
+      // 향상된 for문
+      // for{const arg of args  // const로 써도 반복문 작동되고 소멸되는 개념이라 사용해도 let과 같음
+      for(let arg of args) {  // 객체인 경우 in은 key값을 뽑을때 of는 value값을 뽑을떄  // use strict 안썼으면 그냥 arg of args 가능
+        cnt++;
+        console.log(`${cnt}.${arg}`);  // 변수를 arg로 받음!!
+      }
+
+      console.log('');
+      console.log('forEach문');
+      // forEach문(front에서 많이 사용)
+      args.forEach(function(arg){  // 꺼내는 거니까 (arg) // forEach(어떤 기능을 수행할거니(기능을 쓸때는 function // 여기서는 익명함수 사용 function /이름x/(매개변수){실행할내용})) // 배열명.chaining기법
+        cnt++;
+        console.log(`${cnt}.${arg}`);  
+      });
+
+      console.log('');
+      console.log('Arrow FUnction');
+      // forEach문 -> Arrow Function(에로우로 바꿔서 사용할 수 있어서 그래서 익명함수 사용  // 자바에서는 람다식(->)에서 사용)
+      args.forEach((arg) => {
+        cnt++;
+        console.log(`${cnt}.${arg}`);  
+      });
+
+      // 값 되돌려주기(Return) // js 값이 없으면 undefined 하고 소멸(무조건 undefined라도 리턴) // 자바에서는 무조건 return값이 있어야(자바에서는 리턴값없으면 void)
+    }
+
+    function print8(su1, su2) {
+      console.log('');
+      console.log(`su1:${su1} , su2:${su2}`);  // EL(Expression Language) == {}
+      return su1 + su2;
+    }
+  </script>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+  <h2>함수 연습</h2>
+  <input type="button" value="일반함수" onclick="print1()" class="btn btn-success" />
+  <input type="button" value="매개값전달" onclick="print2('안녕')" class="btn btn-primary" />
+  <!-- <input type="button" value="객체처리" onclick="print2(btom)" class="btn btn-secondary" /> -->
+  <input type="button" value="객체처리" onclick="print3(btom)" class="btn btn-secondary" />
+  <input type="button" value="기본값처리" onclick="print4('Good')" class="btn btn-info" />  <!-- 값이 하나라서 에러는 아니고 undefined -->
+  <input type="button" value="기본값처리2" onclick="print5('Good')" class="btn btn-warning" />
+  <input type="button" value="여러개값처리" onclick="print6(10,20,'안녕','good',true)" class="btn btn-danger" />
+  <input type="button" value="여러개값처리2" onclick="print7(10,20,'안녕','good',true)" class="btn btn-light" />
+  <!-- <input type="button" value="여러개값처리3" onclick="alert(print7(10,20,'안녕','good',true))" class="btn btn-light" /> undefined -->
+  <input type="button" value="리턴값처리" onclick="alert(print8(10,20))" class="btn btn-dark color-white" />
+</body>
+</html>

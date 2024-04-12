@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test10.html(배열)</title>
+  <script>
+    'use strict';
+
+    const arr1 = new Array();  // 자바에서 new int[] 값, 크기
+    console.log("arr1 : ", arr1);
+    console.log("arr1.length() : " + arr1.length);
+    console.log("typeof(arr1)", typeof(arr1));
+    console.log("====================================================");
+    
+    const arr2 = ['사과','배','바나나','딸기','포도'];
+    console.log("arr2 : ", arr2);
+    console.log("arr2.length() : " + arr2.length);
+    console.log("arr2[1] : ", arr2[1]);
+    console.log('');
+    for(let i=0; i<arr2.length; i++) {
+      console.log(`arr2[${i}] = ${arr2[i]}`);
+    }
+    console.log('');
+    for(let arr of arr2) {  // in 주소, 키  // of 데이터 값
+      console.log(arr);
+    }
+    console.log('');
+    for(let arr in arr2) {
+      console.log(arr);
+    }
+
+    console.clear();
+
+    // forEach문을 이용한 반복 출력 : 배열명.forEach(function([데이터],[index],[객체명]){});  //(3개다 생략은 가능 거의 1,2개 인자 사용) // 키, 값 둘다 필요한 경우가 많아서 자주 사용
+    let strData = '', strIndex = '';
+    arr2.forEach(function(data, i, arr2){  // arr2 배열명은 굳이 안써도됨
+      strData += data + "/";
+      strIndex += i + "/";
+      // console.log(arr2);
+    });
+    console.log('');
+
+    // Array Function 변경하기
+    strData = '', strIndex = '';
+    arr2.forEach((data, i, arr2) => {  // arr2 배열명은 굳이 안써도됨
+      strData += data + "/";
+      strIndex += i + "/";
+    });
+
+    console.log("strData : " + strData);
+    console.log("strIndex : " + strIndex);
+  </script>
+</head>
+<body>
+  <h2>배열(Array) 연습</h2>
+</body>
+</html>

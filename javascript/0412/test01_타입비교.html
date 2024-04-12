@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test01.html</title>
+  <script>
+    'use strict';
+
+    let atom1 = 100;
+    console.log("atom1의 타입 : ", typeof(atom1));
+
+    let atom2 = '100';
+    console.log("atom1의 타입 : ", typeof(atom2));
+
+    if(atom1 == atom2) console.log("atom1과 atom2는 같다.");
+    else console.log("atom1과 atom2는 다르다.");
+
+    if(atom1 === atom2) console.log("atom1과 atom2는 같다.");  // 타입까지 비교 '==='
+    else console.log("atom1과 atom2는 다르다.");
+  </script>
+</head>
+<body>
+  <h2>동등비교(일치연산자 : ===)</h2>
+</body>
+</html>

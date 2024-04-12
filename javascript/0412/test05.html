@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test05.html</title>
+  <script>
+    'use strict';
+
+    function atom(answer, printYes, printNo) {
+      if(answer.toUpperCase() == 'Y') printYes();  // printYes를 함수로 부름
+      else printNo();  // 밑에 p태그 input 버튼 눌러야 불러옴 사용가능
+    }
+
+    const printYes = () => console.log("작업을 계속합니다.");
+    const printNo = () => console.log("작업을 마칩니다..");
+
+    let cnt = 0;
+    const callBackFunction = function print() {  // 익명함수x print함수명
+      cnt++;
+      console.log(`${cnt} : 콜백지옥`);
+      print();  // 콜백지옥.... 내가 나를 부름  자꾸 뭘 부름(스택이 꽉 찼다는것)  // Uncaught RangeError: Maximum call stack size exceeded
+    }
+
+    // 팩토리얼 콜백함수로 만들기
+    function factorial(n) {
+      return (n != 1) ? n * factorial(n - 1) : 1;  // 참이란 개념으로 1만 넘김
+    }
+
+    function factorialCalc() {
+      let n = prompt("수를 입력하세요");
+      let res = factorial(n);
+      console.log(`입력된 수 ${n}의 팩토리얼 값은 ${res} 입니다.`);
+    }
+  </script>
+</head>
+<body>
+  <h2>콜백함수</h2>  <!--함수에서 함수를 부름 // 콜백지옥 주의-->
+  <pre>
+    Callback Function : 
+      - 함수가 함수를 호출하는 경우
+      - 함수 호출시 매개값을 함수로 호출하는 함수,
+      - 함수 선언시에 함수를 정의해서 사용하는 경우..
+      - Recursion(되부름(재귀함수)) : 팩토리얼, 피보나치수열 등....  <!--5->5*4*3*2*1 // 0 1 1 2 3 5 8 13 21..-->
+  </pre>
+  <p><input type="button" value="작업진행" onclick="atom('y', printYes, printNo)" /></p>  <!--printYes를 변수로 부름 // 함수를 변수 부르듯이 호출-->
+  <p><input type="button" value="작업중지" onclick="atom('n', printYes, printNo)" /></p>
+  <p><input type="button" value="콜백지옥" onclick="callBackFunction()" /></p>
+  <p><input type="button" value="팩토리얼" onclick="alert('5팩토리얼 : ' + factorial(5))" /></p>
+  <p><input type="button" value="팩토리얼2" onclick="factorialCalc()" /></p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test04.html</title>
+  <script>
+    'use strict';
+
+    // let mbc1 = function() {
+    //   console.log("이곳은 함수 표현식입니다.");
+    // }
+    
+    // let mbc1 = () => {
+    //   console.log("이곳은 함수 표현식입니다.");
+    // }
+
+    let mbc1 = () => console.log("1.이곳은 함수 표현식입니다.");
+
+    let mbc2 = () => "2.이곳은 함수 표현식입니다.";  // 수행할 내용이 한줄밖에 없으면 (return) " " 생략가능 return 있으면 error
+
+    mbc1();
+    console.log("3.", mbc2());
+    let res = mbc2();
+    console.log("4.", res);
+    console.log('');
+
+    // function mbc3(su1, su2) {  // 백엔드의 경우 이렇게 많이 쓰임 // 백에서 값을 넘겨주고 검사하고  // 그러나 애로우로 바꿀 수 있어야함
+    //   res = su1 + su2;
+    //   return res;
+    // }
+
+    // const mbc3 = (su1, su2) => {
+    //   res = su1 + su2;
+    //   return res;
+    // }
+
+    const mbc3 = (su1, su2) => su1 + su2;  // 한줄이라서 return 생략가능
+  </script>
+</head>
+<body>
+  <h2>Arrow Function</h2>
+  <p><input type="button" value="mbc1" onclick="mbc1()" /></p>
+  <p><input type="button" value="mbc3" onclick="alert(mbc3(15,25))" /></p>
+</body>
+</html>

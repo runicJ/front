@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test08.html</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    'use strict';
+
+    function forCheck() {
+      let su1 = document.getElementById("su1").value;  // form 태그 사용 안했으면 무조건 id로 호출
+      let su2 = document.getElementById("su2").value;
+      let str = "";  // 누적할때 공백으로 둠
+      let res;
+
+      if(su1 > su2) {
+        alert("시작단에 더 큰 수를 입력하셨습니다! 다시 입력해 주세요"); 
+        location.reload;
+      }
+
+      for(let i=su1; i<=su2; i++) {
+        str += "* "+ i +"단 *<br/>"
+        for(let j=1; j<10; j++) {
+          res = i * j;
+          str += i + ' * ' + j + " = " + res + "<br/>";
+        }
+      }
+      demo.innerHTML = str;
+    }
+
+    // const resetCheck = () => document.getElementById("su").value = 1;  // let resetCheck도 가능
+  </script>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+  <h2>구구단 출력</h2>
+  <pre>
+    문제 : 구구단의 시작단(startDan)과 끝단(endDan)을 입력받아 출력하시오.
+  </pre>
+  <hr/>
+  <p>시작할 단과 끝 단을 입력하세요?
+    <input type="number" name="su1" id="su1" value="1" class="form-control" autofocus required />
+    <input type="number" name="su2" id="su2" value="2" class="form-control" autofocus required />
+  </p>
+  <p>
+    <input type="button" value="구구단 출력" onclick="forCheck()" class="btn btn-success form-control mb-2" />  <!--mb-2 8px-->
+    <input type="reset" value="초기화" onclick="location.reload()" class="btn btn-warning form-control" />  <!--새로고침!-->
+  </p>
+  <hr/>
+  <div id="demo"></div>
+</div>
+</body>
+</html>
