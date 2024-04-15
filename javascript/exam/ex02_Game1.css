@@ -19,81 +19,81 @@ body{
 
 .game1 h2 {
   text-align: center;
+  font-weight: bolder;
   margin-bottom: 20px;
 }
 
-.image_area{
+.image {
   display:flex;
   justify-content:center;
 }
 .score{
   text-align: center;
-  font-size:30px;
-  margin-top:30px;
+  font-size:20px;
+  margin-top:10px;
   margin-bottom:30px;
 }
 .computer{
-  margin-top:30px;
+  margin-top:10px;
 }
-.button_area{
-  display:flex;
-  justify-content: center;
-  
-}
-.reset_end{
+.button {
   display:flex;
   justify-content: center;
 }
-#reset_btn{
-  font-size:30px;
-  font-weight:1000;
+.reset-end {
+  display:flex;
+  justify-content: center;
+}
+#reset_btn {
+  font-size:20px;
+  font-weight:bold;
   border-radius:10px;
-  padding:40px 40px;
+  padding:20px;
   margin:10px;
   background-color: white;
   color:red;
 }
-#end_btn{
-  font-size:30px;
-  font-weight:1000;
+#end_btn {
+  font-size:20px;
+  font-weight:bold;
   border-radius:10px;
-  padding:40px 40px;
+  padding:20px;
   margin:10px;
   background-color: white;
   color:red;
 }
 
 #img {
-  width: 500px;
+  width: 400px;
   height: auto;
 }
 
 #scissors{
-  font-size:30px;
+  font-size:20px;
   font-weight:bold;
   border-radius:10px;
-  width:150px;
-  height:100px;
+  width:100px;
+  height:70px;
   margin:10px;
   background-color: white;
   color:black;
 }
 #rock{
-  font-size:30px;
+  font-size:20px;
   font-weight:bold;
   border-radius:10px;
-  width:150px;
-  height:100px;
+  width:100px;
+  height:70px;
   margin:10px;
   background-color: white;
   color:black;
 }
 #paper{
-  font-size:30px;
+  font-size:20px;
   font-weight:bold;
   border-radius:10px;
-  width:150px;
-  height:100px;
+  width:100px;
+  height:70px;
   margin:10px;
   background-color: white;
   color:black;

@@ -29,18 +29,12 @@
       else {
         for (let i = su1; i <= su2; i++) {
           if((i-su1) % col == 0) str +=`<div class= "row">`;
-          if(col > (su2-su1+1)) {
-            str += `<div class="col">${i}단 <br/>`;
-          }
-          else {
-            str += `<div class="col-${12/col}">${i}단 <br/>`;
-          }
+          str += `<div class="col">${i}단 <br/>`;
           for (let j = 1; j <= 9; j++) {
             str += `${i} x ${j} = ${i * j}<br/>`;
           }
           str += `</div>`;
           if ((i-su1+1) % col == 0 || i == su2) str += `</div>`;
-          // if ((i-su1+1) % col == 0) str += `</div>`;
         }
       }
       demo.innerHTML = str;
