@@ -12,30 +12,37 @@
     'use strict';
 
     function forCheck() {
-      let su1 = document.getElementById("su1").value;
+      let su1 = parseInt(document.getElementById("su1").value);
       let su2 = document.getElementById("su2").value;
       let col = document.getElementById("col").value;
       let str = '';
       
-      if(su1 > su2) {
-        alert("시작단에 더 큰 수를 입력하셨습니다! 다시 입력해 주세요"); 
-        location.reload();
-      }
       // if(su1 > su2) {
       //   let temp = su1;
       //   su1 = su2;
       //   su2 = temp
 
-      for (let i = su1; i <= su2; i++) {
-        if((i-su1) % col == 0) str +=`<div class= "row">`;
-        str += `<div class="col">${i}단 <br/>`;
-        for (let j = 1; j <= 9; j++) {
-          str += `${i} x ${j} = ${i * j}<br/>`;
-        }
-        str += `</div>`;
-        if ((i-su1+1) % col == 0 || i == su2) str += `</div>`;
+      if(su1 > su2) {
+        alert("시작단에 더 큰 수를 입력하셨습니다! 다시 입력해 주세요"); 
+        location.reload();
       }
-    
+      else {
+        for (let i = su1; i <= su2; i++) {
+          if((i-su1) % col == 0) str +=`<div class= "row">`;
+          if(col > (su2-su1+1)) {
+            str += `<div class="col">${i}단 <br/>`;
+          }
+          else {
+            str += `<div class="col-${12/col}">${i}단 <br/>`;
+          }
+          for (let j = 1; j <= 9; j++) {
+            str += `${i} x ${j} = ${i * j}<br/>`;
+          }
+          str += `</div>`;
+          if ((i-su1+1) % col == 0 || i == su2) str += `</div>`;
+          // if ((i-su1+1) % col == 0) str += `</div>`;
+        }
+      }
       demo.innerHTML = str;
     }
   </script>

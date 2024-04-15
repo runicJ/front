@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test2.html(Object(객체))</title>
+  <script>
+    'use strict';
+
+    // 객체 생성(객체 : {키(key), 값(value)})
+    let obj1 = {};  // 생성하면서 값을 넣어줌
+    let obj2 = new Object();  // 생성해주고 나중에 값을 넣어줌
+    obj2.name = '홍길동';  // obj1 = {name:'홍길동'}
+    obj2.age = 25;
+    obj2.jumsu = [100, 90, 80];  // 타입이 전부 틀려도 됨
+    obj2.myFunc = function() {  // 익명함수 // function 앞으로 가능
+      console.log("성명 : ", this.name);
+    };  // 하나의 문장이 끝났으니까 ; 적어야 함
+    obj2.myObj = {  // 객체 안에 객체 가능
+      tel : "010-1234-5678",
+      address : '청주시 흥덕구 사창동 그린컴퓨터'
+    }
+
+    console.log("obj2 객체 : ", obj2);
+    console.log('');
+    console.log(obj2.myFunc);  // 그냥 내용만 나와서 출력하려고 아래처럼 함수 자체를 호출
+    obj2.myFunc();
+  </script>
+</head>
+<body>
+  <h2>객체(object) 연습</h2>
+</body>
+</html>

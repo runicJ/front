@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test4.html(객체연습3)</title>
+  <script>
+    'use strict';
+
+    // const obj1 = new Object();  // 객체 생성
+    const obj2 = {name:'홍길동', age:25, job:'학생'};  // 값을 넣어서 생성
+    console.log(obj2);
+    console.log('');
+    // 생성자에서 만들지 않고 필드에 추가 ex.성별 추가(java에서는 불가)
+    obj2.gender = true;  // 성별: 남자를 true, 여자를 false로 처리하고자 한다.
+    console.log(obj2);
+    console.log('');
+    
+    delete obj2.gender;
+    console.log(obj2);
+    console.log('');
+    
+    // 값의 처리
+    console.log('성명', obj2.name);
+    console.log('성명2', obj2['name']);  // 배열 안에 변수형식으로 쓰려면 무조건 문자형식('')으로 써야함
+    console.log('');
+    
+    // const obj3 = {name:'홍길동', age:25, job:'학생'};
+    // const obj4 = {name:'김말숙', age:29, job:'회사원'};
+    // const obj5 = {name:'이기자', age:33, job:'의사'};
+    const obj6 = {name:'소나무', age:55, job:'판사'};
+    
+    const obj3 = makeObject('홍길동', 25, '학생');  // 게시판 글번호, title 등등 해서 밑에서 보여줌(back에선 이렇게 사용x)
+    console.log(obj3);
+    
+    function makeObject(name, age, job) {  // object 만드는 함수 생성
+      return {
+        //   name: name,  // name: name이라는 매개변수
+        //   age: age,
+        //   job: job,
+        name,
+        age,
+        job,  // 생략가능
+      };
+    }
+    console.log('');
+
+    // '키' 검색..(in)  // 향상된 for문 (in 키, of 값을 꺼냄)
+    for(let key in obj3) {
+      console.log(key, obj3[key]);
+    }
+    console.log('');
+
+    // '값' 검색..(of)
+    // for(let value of obj6) {  // 변수
+    //   console.log(`${value}`);
+    // }
+    const arr = [1, 'one', '하나', true];
+    for(let value of arr) {
+      console.log(value);
+    }
+    console.log('');
+
+    // 객체 복사(얕은복사)
+    console.log("obj6 : ", obj6);
+    let obj7 = obj6;  // 얕은 복사(주소복사 obj6 값이 바뀌면 7도 바뀜)  // 깊은 복사를 하려면 따로따로 넣어줘야함
+    console.log('');
+
+    console.log("obj7 : ", obj7);
+
+    obj7.name = '감나무';
+    console.log("obj7 : ", obj7);
+    console.log('');
+    console.log("obj6 : ", obj6);
+    console.log('');
+
+    // 객체 복사(깊은복사) - 객체 생성해서 따로 바뀌어도 값이 같이 바뀌지 않음
+    // const obj8 = new Object();
+    const obj8 = {};
+    for(let key in obj7) {  // 7번에 있는 key를 꺼냄
+      obj8[key] = obj7[key];
+    }
+    console.log("obj8 : ", obj8);
+    console.log('');
+    console.log("obj7 : ", obj7);
+    console.log('');
+    
+    obj8.name = '대나무';
+    console.log("obj8 : ", obj8);
+    console.log('');
+    console.log("obj7 : ", obj7);
+    console.log('');
+    
+    const obj9 = {};
+    Object.assign(obj9, obj6);  // 복사 값을 할당
+    console.log("obj9 : ", obj9);
+    console.log('');
+    console.log("obj6 : ", obj6);
+    console.log('');
+    
+    obj9.name = '참나무';
+    console.log("obj9 : ", obj9);
+    console.log('');
+    console.log("obj6 : ", obj6);
+    console.log('');
+    
+  </script>
+</head>
+<body>
+  <h2>객체연습</h2>
+</body>
+</html>

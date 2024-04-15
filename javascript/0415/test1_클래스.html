@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test1.html(클래스)</title>
+  <script>
+    'use strict';
+
+    // 클래스 만들기
+    class Member {  // 접근제한자O, 첫글자 대문자  // 필드, 생성자, 메소드
+      // 필드명
+      name;  // 타입x
+      age;
+
+      // 기본 생성자
+      // constructor() {}
+
+      // 사용자 지정 생성자
+      constructor(name, age) {  // java에서는 생성자는 주로 초기값 할당
+        this.name = name;
+        this.age = age;
+        // name;  // 앞,뒤가 같으면 그냥 써도 됨 필드명 필요없음
+        // age;
+      }
+
+      // 메소드  // 무조건 리턴값O
+      MemberPrint() {
+        let job = '학생';
+        console.log("1.성명 : ", this.name, ", 나이 : ", this.age);
+      }
+    }
+
+    // 클래스 호출 (java에서 호출하려면 해당클래스를 생성)
+    let member = new Member("홍길동", 25);
+
+    console.log("1.성명 : ", member.name, ", 나이 : ", member.age);
+    
+    //메소드 호출
+    member.MemberPrint();  // 함수 개념이니까 ()붙여야 함
+  </script>
+</head>
+<body>
+  <h2>클래스 연습</h2>
+</body>
+</html>
