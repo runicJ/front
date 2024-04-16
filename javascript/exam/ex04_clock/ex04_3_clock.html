@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <script>
+        function setClock() {
+            let dateInfo = new Date();
+            let hour = modiNum(dateInfo.getHours());
+            let min = modiNum(dateInfo.getMinutes());
+            let sec = modiNum(dateInfo.getSeconds());
+            let year = dateInfo.getFullYear();
+            let month = dateInfo.getMonth()+1;
+            let date = dateInfo.getDate();
+            time.innerHTML = hour + ":" + min + ":" + sec;
+            // document.getElementById("time").innerHTML = hour + ":" + min + ":" + sec;
+            document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+        }
+        function modiNum(time) {
+            if(time < 10) {
+                return "0"+ time;
+            }
+            else return time;
+        }
+        window.onload = function() {
+            setClock();
+            setInterval(setClock,1000);
+        }
+    </script>
+    <style>
+        * {
+            text-align: center;
+            position: relative;
+            top: 50px;
+        }
+        body {
+            background-color: midnightblue;
+        }
+        .date {
+            font-size: 1.2em;
+            color: whitesmoke;
+        }
+        .time {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: bisque;
+        }
+    </style>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+    <div id="time" class="time"> </div>
+    <div id="date" class="date"> </div>
+</div>
+</body>
+</html>

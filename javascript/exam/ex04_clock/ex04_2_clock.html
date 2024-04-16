@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>디지털 시계 만들기</title>
+  <script>
+    'use strict';
+
+    let handleId = 0; 
+    
+    function getTime(){
+      const date = new Date();
+      const hour = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+      const clock = `${hour<10?'0'+hour:hour}:${minutes<10?'0'+minutes:minutes}:${seconds<10?'0'+seconds:seconds}`;
+      document.getElementById('time').innerHTML = clock;
+    }
+    
+    function go() {
+      if(handleId == 0){
+        handleId = setInterval(getTime, 1000);
+      }
+    }
+    
+    function stop() {
+      clearInterval(handleId);
+      handleId = 0;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function(){
+      getTime();
+    });
+  </script>
+  <style>
+    @font-face {
+    font-family: 'LAB디지털';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/LAB디지털.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+    *{ font-family: 'LAB디지털'; }
+    html, body{ margin: 0; }
+    .container{ text-align: center; }
+    .clock{
+    color:red; background-color: black; 
+    width: 200px; margin: 5px auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="clock">
+      <h1 id="time"></h1>
+    </div>
+    <button id="stop" onclick="stop()">STOP</button>
+    <button id="go" onclick="go()">GO</button>
+  </div>
+</body>
+</html>
