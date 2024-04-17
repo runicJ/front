@@ -3,9 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>전자시계</title>
+  <title>낡은 시계</title>
   <script>
     'use strict';
+
+    const clockImgs = ['hourLeft','hourRight','minLeft','minRight','secLeft','secRight'];
+    clockImgs.forEach(id => {
+      const flicker = document.getElementById(id);
+      flicker.querySelector('.front').textContent = 0;
+      flicker.querySelector('.back').textContent=0;
+    });
+
+    setInterval(updateTime, 1000);
 
     function updateTime() {
         const date = new Date();
@@ -21,10 +30,20 @@
         setDigitImage('secondOnes', second % 10);
     }
 
-    function setDigitImage(elementId, digit) {
-        const digitElement = document.getElementById(elementId);
-        digitElement.style.backgroundImage = `url('images/balloon-num.png')`;
+    function updateDigit(id, value) {
+    const flipper = document.getElementById(id);
+    const front = flipper.querySelector('.front');
+    const back = flipper.querySelector('.back');
+
+    if (front.textContent !== value) {
+      flipper.style.transform = 'rotateX(180deg)';
+      setTimeout(() => {
+        front.textContent = value;
+        back.textContent = value;
+        flipper.style.transform = 'rotateX(0deg)';
+      }, 250);
     }
+  }
 
     window.addEventListener('DOMContentLoaded', function() {
     updateTime();
@@ -38,29 +57,189 @@
         justify-content: center;
         text-align: center;
         margin: 10%;
+        background-image: url("clock/see-wood.jpg");
     }
     .container {
-        background-image: url("images/see-wood.jpg");
+        display: flex;
     }
-    #demo img {
-        width: 12%;
-        height: auto;
+    .clock {
+      position: relative;
+      width: 60px;
+      height: 100px;
+      overflow: hidden;
+    }
+    .flicker {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+    }
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* font-size */
+      /* background */
+      border: 1px solid #ccc;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    .back {
+      transform: rotateX(180deg);
     }
 </style>
 </head>
 <body>
 <p><br/></p>
 <div class="container">
-  <div class="clock" id="clock">
-    <div class="digit" id="hourTens"></div>
-    <div class="digit" id="hourOnes"></div>
-    <div class="digit" id="separator">:</div>
-    <div class="digit" id="minuteTens"></div>
-    <div class="digit" id="minuteOnes"></div>
-    <div class="digit" id="separator">:</div>
-    <div class="digit" id="secondTens"></div>
-    <div class="digit" id="secondOnes"></div>
+  <div class="clock">
+    <div class="flicker" id="hourLeft">
+      <div class="front">0</div>
+      <div class="back">0</div>
+    </div>
+  </div>
+  <div class="clock">
+    <div class="flicker" id="hourRight">
+      <div class="front">0</div>
+      <div class="back">0</div>
+    </div>
+  </div>
+  <div class="clock">
+    <div class="flicker" id="minLeft">
+      <div class="front">0</div>
+      <div class="back">0</div>
+    </div>
+  </div>
+  <div class="clock">
+    <div class="flicker" id="minRight">
+      <div class="front">0</div>
+      <div class="back">0</div>
+    </div>
+  </div>
+  <div class="clock">
+    <div class="flicker" id="secLeft">
+      <div class="front">0</div>
+      <div class="back">0</div>
+    </div>
+  </div>
+  <div class="clock">
+    <div class="flicker" id="secRidght">
+      <div class="front">0</div>
+      <div class="back">0</div>
+    </div>
   </div>
 </div>
 </body>
 </html>
+
+<!-- let h0, h1, m0, m1, s0, s1, hDigit, minDigit, secDigit;
+
+const realTime = setInterval(() => {
+  const getTime = new Date();
+
+  // HOUR
+  const hour = getTime.getHours();
+  hDigit = hour.toString();
+  h0 = hDigit.charAt(0);
+  h1 = hDigit.charAt(1);
+  if (hDigit < 10) {
+    h0 = 0;
+    h1 = hDigit;
+  }
+
+  // MIN
+  const min = getTime.getMinutes();
+  minDigit = min.toString();
+  m0 = minDigit.charAt(0);
+  m1 = minDigit.charAt(1);
+  if (minDigit < 10) {
+    m0 = 0;
+    m1 = minDigit;
+  }
+
+  // SEC
+  const sec = getTime.getSeconds();
+  secDigit = sec.toString();
+  s0 = secDigit.charAt(0);
+  s1 = secDigit.charAt(1);
+  if (secDigit < 10) {
+    s0 = 0;
+    s1 = secDigit;
+  }
+}, 500);
+아래는 숫자가 바뀔때마다 플랩 애니메이션을 적용하고 해제하기 위한 클래스 토글 함수다.
+
+// FLIP UI
+const flipUI = (ele1, ele2) => {
+  ele1.classList.remove('active');
+  ele2.classList.remove('active');
+  void ele1.offsetWidth;
+  void ele2.offsetWidth;
+  ele1.classList.add('active');
+  ele2.classList.add('active');
+}
+setInterval의 향연..
+각 단위별 로직이 조금씩 다르지만 부끄러워서 Sec 로직만 적었다. 각 숫자 단위가 어떻게 달라지는지에 따라 표현을 조건별로 분기하여 나름 애썼던 모습이 보인다.
+
+// SEC FLIPPER
+const countSec = setInterval(() => {
+  if (s1 != 0) {
+    flipUI(upFlipSecR, loFlipSecR);
+  } else {
+    flipUI(upFlipSecL, loFlipSecL);
+    flipUI(upFlipSecR, loFlipSecR);
+  }
+  if (s1 % 10 === 0) {
+    flipUI(upFlipSecL, loFlipSecL);
+  }
+  upSecL.textContent = s0;
+  loFlipSecL.textContent = s0;
+  upSecR.textContent = s1;
+  loFlipSecR.textContent = s1;
+  delaySec(s0, s1);
+}, 1000)
+
+const delaySec = function (c, d) {
+  setTimeout(() => {
+    upFlipSecL.textContent = c;
+    loSecL.textContent = c;
+    upFlipSecR.textContent = d;
+    loSecR.textContent = d;
+  }, 800);
+} 
+const upHourL = document.querySelector('.js__upper__hourL'),
+upFlipHourL = document.querySelector('.js__upper__flip__hourL'),
+loHourL = document.querySelector('.js__lower__hourL'),
+loFlipHourL = document.querySelector('.js__lower__flip__hourL');
+
+const upHourR = document.querySelector('.js__upper__hourR'),
+upFlipHourR = document.querySelector('.js__upper__flip__hourR'),
+loHourR = document.querySelector('.js__lower__hourR'),
+loFlipHourR = document.querySelector('.js__lower__flip__hourR');
+
+const upMinL = document.querySelector('.js__upper__hourL'),
+upFlipMinL = document.querySelector('.js__upper__flip__MinL'),
+loMinL = document.querySelector('.js__lower__MinL'),
+loFlipMinL = document.querySelector('.js__lower__flip__MinL');
+
+const upMinR = document.querySelector('.js__upper__hourR'),
+upFlipMinR = document.querySelector('.js__upper__flip__MinR'),
+loMinR = document.querySelector('.js__lower__MinR'),
+loFlipMinR = document.querySelector('.js__lower__flip__MinR');
+
+const upSecL = document.querySelector('.js__upper__SecL'),
+upFlipSecL = document.querySelector('.js__upper__flip__SecL'),
+loSecL = document.querySelector('.js__lower__SecL'),
+loFlipSecL = document.querySelector('.js__lower__flip__SecL');
+
+const upSecR = document.querySelector('.js__upper__SecR'),
+upFlipSecR = document.querySelector('.js__upper__flip__SecR'),
+loSecR = document.querySelector('.js__lower__SecR'),
+loFlipSecR = document.querySelector('.js__lower__flip__SecR');
+-->

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>디지털 시계</title>
+  <script>
+    function updateTime() {
+        const date = new Date();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const second = date.getSeconds();
+
+        setDigitPanel('hourTensPanel', Math.floor(hour / 10));
+        setDigitPanel('hourOnesPanel', hour % 10);
+        setDigitPanel('minuteTensPanel', Math.floor(minute / 10));
+        setDigitPanel('minuteOnesPanel', minute % 10);
+        setDigitPanel('secondTensPanel', Math.floor(second / 10));
+        setDigitPanel('secondOnesPanel', second % 10);
+    }
+
+    // function setDigitPanel(panelId, digit) {
+    //   const panel = document.getElementById(panelId);
+    //   panel.classList.add('animate');
+    //   setTimeout(() => {
+    //     panel.innerHTML = `<img src="clock/${digit}.jpg" alt="${digit}">`;
+    //     panel.classList.remove('animate');
+    //   }, 500);
+    // }
+
+    function setDigitPanel(panelId, digit) {
+        const panel = document.getElementById(panelId);
+        const imagePath = 'clock/'; // 이미지 경로 설정
+
+        // 이미지의 src를 변경하여 다음 숫자로 전환
+        panel.innerHTML = `
+            <img src="${imagePath}${digit}.jpg" alt="${digit}">
+            <img src="${imagePath}${digit}.jpg" alt="${digit}">`; // 숫자가 반복되도록 이미지를 두 번 추가합니다.
+
+        // 애니메이션을 트리거하기 위해 flipped 클래스를 추가합니다.
+        panel.classList.add('flipped');
+
+        // 애니메이션이 끝난 후에 flipped 클래스를 제거하여 초기 상태로 복원합니다.
+        setTimeout(() => {
+            panel.classList.remove('flipped');
+        }, 500); // 애니메이션 시간(초)에 맞게 설정하세요
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      updateTime();
+      setInterval(updateTime, 1000);
+    });
+  </script>
+  <style>
+    .digit-container {
+      display: inline-block;
+      position: relative;
+      width: 300px;
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .digit-panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* 내부 이미지를 잘라내도록 설정합니다. */
+        position: relative;
+    }
+
+    .digit-panel img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease;
+    }
+
+    .flipped {
+    transform: rotateX(90deg); /* X축을 기준으로 90도 회전하여 반으로 접힌 효과를 줍니다. */
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="digit-container" id="hourTens">
+      <div class="digit-panel" id="hourTensPanel">
+        <img src="clock/0.jpg" alt="0">
+        <img src="clock/1.jpg" alt="1">
+        <img src="clock/2.jpg" alt="2">
+        <img src="clock/3.jpg" alt="3">
+        <img src="clock/4.jpg" alt="4">
+        <img src="clock/5.jpg" alt="5">
+        <img src="clock/6.jpg" alt="6">
+        <img src="clock/7.jpg" alt="7">
+        <img src="clock/8.jpg" alt="8">
+        <img src="clock/9.jpg" alt="9">
+      </div>
+    </div>
+    <div class="digit-container" id="hourOnes">
+        <div class="digit-panel" id="hourOnesPanel">
+            <img src="clock/0.jpg" alt="0">
+            <img src="clock/1.jpg" alt="1">
+            <img src="clock/2.jpg" alt="2">
+            <img src="clock/3.jpg" alt="3">
+            <img src="clock/4.jpg" alt="4">
+            <img src="clock/5.jpg" alt="5">
+            <img src="clock/6.jpg" alt="6">
+            <img src="clock/7.jpg" alt="7">
+            <img src="clock/8.jpg" alt="8">
+            <img src="clock/9.jpg" alt="9">
+        </div>
+      </div>
+      <!-- 분에 대한 숫자 판 -->
+      <div class="digit-container" id="minuteTens">
+        <div class="digit-panel" id="minuteTensPanel">
+            <img src="clock/0.jpg" alt="0">
+            <img src="clock/1.jpg" alt="1">
+            <img src="clock/2.jpg" alt="2">
+            <img src="clock/3.jpg" alt="3">
+            <img src="clock/4.jpg" alt="4">
+            <img src="clock/5.jpg" alt="5">
+            <img src="clock/6.jpg" alt="6">
+            <img src="clock/7.jpg" alt="7">
+            <img src="clock/8.jpg" alt="8">
+            <img src="clock/9.jpg" alt="9">
+        </div>
+      </div>
+      <div class="digit-container" id="minuteOnes">
+        <div class="digit-panel" id="minuteOnesPanel">
+            <img src="clock/0.jpg" alt="0">
+            <img src="clock/1.jpg" alt="1">
+            <img src="clock/2.jpg" alt="2">
+            <img src="clock/3.jpg" alt="3">
+            <img src="clock/4.jpg" alt="4">
+            <img src="clock/5.jpg" alt="5">
+            <img src="clock/6.jpg" alt="6">
+            <img src="clock/7.jpg" alt="7">
+            <img src="clock/8.jpg" alt="8">
+            <img src="clock/9.jpg" alt="9">
+        </div>
+      </div>
+      <!-- 초에 대한 숫자 판 -->
+      <div class="digit-container" id="secondTens">
+        <div class="digit-panel" id="secondTensPanel">
+            <img src="clock/0.jpg" alt="0">
+            <img src="clock/1.jpg" alt="1">
+            <img src="clock/2.jpg" alt="2">
+            <img src="clock/3.jpg" alt="3">
+            <img src="clock/4.jpg" alt="4">
+            <img src="clock/5.jpg" alt="5">
+            <img src="clock/6.jpg" alt="6">
+            <img src="clock/7.jpg" alt="7">
+            <img src="clock/8.jpg" alt="8">
+            <img src="clock/9.jpg" alt="9">
+        </div>
+      </div>
+      <div class="digit-container" id="secondOnes">
+        <div class="digit-panel" id="secondOnesPanel">
+            <img src="clock/0.jpg" alt="0">
+            <img src="clock/1.jpg" alt="1">
+            <img src="clock/2.jpg" alt="2">
+            <img src="clock/3.jpg" alt="3">
+            <img src="clock/4.jpg" alt="4">
+            <img src="clock/5.jpg" alt="5">
+            <img src="clock/6.jpg" alt="6">
+            <img src="clock/7.jpg" alt="7">
+            <img src="clock/8.jpg" alt="8">
+            <img src="clock/9.jpg" alt="9">
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+
+<!-- <img src="clock/0a.jpg" alt="0">
+<img src="clock/0b.jpg" alt="0">
+<img src="clock/1a.jpg" alt="0">
+<img src="clock/1b.jpg" alt="0">
+<img src="clock/2a.jpg" alt="0">
+<img src="clock/2b.jpg" alt="0">
+<img src="clock/3a.jpg" alt="0">
+<img src="clock/3b.jpg" alt="0">
+<img src="clock/4a.jpg" alt="0">
+<img src="clock/4b.jpg" alt="0">
+<img src="clock/5a.jpg" alt="0">
+<img src="clock/5b.jpg" alt="0">
+<img src="clock/6a.jpg" alt="0">
+<img src="clock/6b.jpg" alt="0">
+<img src="clock/7a.jpg" alt="0">
+<img src="clock/7b.jpg" alt="0">
+<img src="clock/8a.jpg" alt="0">
+<img src="clock/8b.jpg" alt="0">
+<img src="clock/9a.jpg" alt="0">
+<img src="clock/9b.jpg" alt="0"> -->
