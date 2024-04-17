@@ -19,23 +19,27 @@
       clearTimeout(statusTime);
       num++;  // 전역변수이기 때문에 증가하면 이 값이 계속 유지됨(초기화x)
       time++;
-
+      console.log("time : ", time);
+      
       statusTime = setTimeout(plus, 500);
-
-      if(num % 10 === 0) {
-        clearTimeout(statusTime);  // 10번 돌면 자동으로 멈추도록
+      
+      // if(num % 10 === 0) {
+        if(time % 10 === 0) {
+          clearTimeout(statusTime);  // 10번 돌면 자동으로 멈추도록
+        }
+        demo.innerHTML = num;  // 원래 로직대로라면 9에서 멈춤 그러나 비동기이기 때문에 23을 건너뛰고 수행하는 동안에 25번이 먼저 수행되어서 10에 멈추게됨
       }
-      demo.innerHTML = num;  // 원래 로직대로라면 9에서 멈춤 그러나 비동기이기 때문에 23을 건너뛰고 수행하는 동안에 25번이 먼저 수행되어서 10에 멈추게됨
-    }
-
+      
     function minus() {
       clearTimeout(statusTime);
       num--;
       time++;
+      console.log("time : ", time);
 
       statusTime = setTimeout(minus, 500);
 
-      if(num % 10 === 0) clearTimeout(statusTime);
+      // if(num % 10 === 0) clearTimeout(statusTime);
+      if(time % 10 === 0) clearTimeout(statusTime);
 
       demo.innerHTML = num;
     }
@@ -43,6 +47,7 @@
     function stop() {
       clearTimeout(statusTime);
       time = 0;
+      console.log("time : ", time);
     }
 
   </script>

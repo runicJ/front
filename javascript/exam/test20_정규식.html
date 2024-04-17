@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test20_정규식.html</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function fCheck() {
+      let regMid = /\w{4,20}$/g;
+      let regPwd = /[a-zA-Z0-9~!@#$%^&*\(\)_+-=\{\}\[\]<>?,\./]{4,20}$/;
+      let regNickName = /[a-zA-Z가-힣0-9]{2,10}$/;
+      let regName = /[a-zA-Z가-힣]{2,10}$/;
+      let regEmail = /^[a-zA-Z0-9]([-_]?[a-zA-Z0-9])*@[a-zA-Z0-9]([-_]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,3})+$/i;
+      let regHomePage = /^((ftp|http|https):\/\/)+[a-zA-Z0-9]([-_]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,3})+$/;
+      let regTel = /\d{2,3}-\d{3,4}-\d{4}$/g;
+      let regJumin = /\d{6}-[1-4]{1}$/g;
+
+      let mid = document.getElementById("mid").value.trim();
+      let pwd = document.getElementById("pwd").value.trim();
+      let rePwd = document.getElementById("rePwd").value.trim();
+      let nickName = document.getElementById("nickName").value.trim();
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let homePage = document.getElementById("homePage").value.trim();
+      let tel = document.getElementById("tel").value.trim();
+      let jumin = document.getElementById("jumin").value.trim();
+
+      // 유효성 검사
+      if(!regMid.test(mid)) {
+        alert("아이디는 영문 대/소문자와 숫자, 그리고 밑줄(_)을 포함하여 4~20자까지 가능합니다.");
+        document.getElementById("mid").focus();
+        return false;
+      }
+      if(!regPwd.test(pwd)) {
+        alert("비밀번호는 영문자, 숫자, 특수문자(~!@#$%^&*()_+-={}[]<>?,./)을 포함하여 4~20자까지 가능합니다.");
+        document.getElementById("pwd").focus();
+        return false;
+      }
+      if(pwd != rePwd) {
+        alert("비밀번호가 일치하지 않습니다.");
+        document.getElementById("rePwd").focus();
+        return false;
+      }
+      if(!regNickName.test(nickName)) {
+        alert("닉네임은 영문자와 한글 숫자를 포함하여 2~10자까지 가능합니다.");
+        document.getElementById("nickName").focus();
+        return false;
+      }
+      if(!regName.test(name)) {
+        alert("성명은 영문자와 한글을 포함하여 2~10자까지 가능합니다.");
+        document.getElementById("name").focus();
+        return false;
+      }
+      if(!regHomePage.test(homePage)) {
+        alert("홈페이지 형식에 맞도록 작성해 주세요.");
+        document.getElementById("homePage").focus();
+        return false;
+      }
+      if(!regEmail.test(email)) {
+        alert("이메일 형식에 맞도록 작성해 주세요.");
+        document.getElementById("email").focus();
+        return false;
+      }
+      if(!regTel.test(tel)) {
+        alert("전화번호 형식(000-0000-0000)에 맞도록 작성해 주세요.");
+        document.getElementById("tel").focus();
+        return false;
+      }
+      if(!regJumin.test(jumin)) {
+        alert("주민번호는 생년월일과 성별에 맞도록 작성해 주세요.");
+        document.getElementById("jumin").focus();
+        return false;
+      }
+
+      alert("유효성 검사 통과~~~ 회원가입 완료!!!");
+    }
+  </script>
+  <style>
+    body {
+      background-color: beige;
+    }
+    h2 {
+      font-weight: bold;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+
+    }
+  </style>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+  <h2>회 원 가 입</h2>
+  <form name="myform" method="post">
+    <div class="form-group">
+      <label for="mid">아이디</label>
+      <input type="text" name="mid" id="mid" value="hkd1234" placeholder="아이디를 입력하세요" class="form-control" autofocus required />
+    </div>
+    <div class="form-group">
+      <label for="pwd">비밀번호</label>
+      <input type="text" name="pwd" id="pwd" value="asdf1234!" placeholder="비밀번호를 입력하세요" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="rePwd">비밀번호체크</label>
+      <input type="text" name="rePwd" id="rePwd" value="asdf1234!" placeholder="비밀번호를 입력하세요" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="nickName">닉네임</label>
+      <input type="text" name="nickName" id="nickName" value="홍장군" placeholder="닉네임을 입력하세요" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="name">성명</label>
+      <input type="text" name="name" id="name" value="홍길동" placeholder="성명을 입력하세요" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="email">이메일</label>
+      <input type="text" name="email" id="email" value="cjsk1126@naver.com" placeholder="이메일을 입력하세요" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="homePage">홈페이지</label>
+      <input type="text" name="homePage" id="homePage" value="cjsk1126.tistory.com" placeholder="홈페이지 주소를 입력하세요" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="tel">전화번호</label>
+      <input type="text" name="tel" id="tel" value="010-1234-5678" placeholder="전화번호를 입력하세요" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="jumin">주민번호</label>
+      <input type="text" name="jumin" id="jumin" value="201126-1" placeholder="주민번호(년월일-성별)를 입력하세요" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="birthday">생일</label>
+      <input type="date" name="birthday" id="birthday" class="form-control" required />  <!-- 기본값 넣는 거 jsp에서-->
+    </div>
+    <div class="form-group">
+      <label for="content">자기소개서</label>
+      <textarea rows="5" name="content" id="content" class="form-control" required>자기소개서 등록하기</textarea>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"><input type="button" value="회원가입" onclick="fCheck()" class="btn btn-success form-control"/></div>
+      <div class="col"><input type="reset" value="다시입력" class="btn btn-warning form-control"/></div>
+      <div class="col"></div>  <!-- 이렇게 안하면 flex-grid 사용 -->
+    </div>
+  </form>
+  <hr/>
+  
+</div>
+</body>
+</html>
