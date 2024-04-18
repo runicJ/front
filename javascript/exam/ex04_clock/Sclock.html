@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>t5.html</title>
+  <link href="https://fonts.cdnfonts.com/css/alarm-clock" rel="stylesheet">
+  <script>
+    'use strict';
+
+    document.addEventListener('DOMContentLoaded', function(){
+        updateTime(); 
+
+        setInterval(updateTime, 1000);
+
+        function updateTime() {
+            let today = new Date();
+            let hh = today.getHours();
+            let mm = today.getMinutes();
+            let ss = today.getSeconds();
+        
+            let dd = today.getDate();
+
+            hh = hh < 10 ? '0' + hh : hh;
+            mm = mm < 10 ? '0' + mm : mm;
+            ss = ss < 10 ? '0' + ss : ss;
+
+            const days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+            let dayIndex = today.getDay();
+
+            let ww = days[dayIndex];
+
+            const www = document.querySelector('.www');
+            const ddd = document.querySelector('.ddd');
+            const hm = document.querySelector('.hm');
+            const sss = document.querySelector('.sss');
+
+            www.innerHTML = `${ww}&nbsp;`;
+            ddd.innerText = dd; 
+            hm.innerHTML = `${hh}:${mm}`;
+            sss.innerHTML = ss;
+        }
+    });
+
+  </script>
+  <style>
+    body{
+        display: flex;
+        height: 100vh;
+        background-color: black;
+        justify-content: center;
+        align-items: center;
+      }
+      .backimg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        background-image: url("../clock/see-wood.jpg");
+        width: 90px;
+        height: 90px;
+      }
+      /* .backimg img {
+        max-width: 90%;
+        height: auto;
+      } */
+      .uhrimg{
+        width: 7.8%;
+        height: auto;
+        position: absolute;
+        top:40.4%;
+        left:57.5%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .uhrimg img{
+        max-width: 100%;
+        height: auto;
+    }
+    .uhr {
+        font-family: 'alarm clock', sans-serif;
+        transform: rotate(5deg);
+        position: absolute;
+        width: 86%;
+        height: 100%;
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+        top: 17.6%;
+        left: 4%;
+    }
+    .date, .time {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+    }
+    .www, .ddd{
+        font-size: 1.2vw;
+    }
+    .hm{
+        font-size: 1.6vw;
+        font-weight: bolder;
+        margin-right: 0.2w;
+    }
+    .sss {
+        font-size: 1.3vw;
+        font-weight: bold;
+    }
+    .uhrimg:hover .uhr{
+        top :-8%;
+        left: 10%;
+        max-width: 200%;
+    }
+    .uhrimg:hover img{
+        max-width: 200%;
+        transform: translate(-25%, -25%);
+    }   
+    .uhrimg:hover .www,
+    .uhrimg:hover .ddd {
+        font-size: 1.8vw;      
+    }
+    .uhrimg:hover .hm {
+        font-size: 2.4vw;  
+    }
+    .uhrimg:hover .sss {
+        font-size: 2vw;  
+    }
+
+    
+  </style>
+</head>
+<body>
+<div>
+    <div class="backimg" >
+        <!-- <img src="../clock/see-wood.jpg" /> -->
+        <div class="uhrimg">
+            <img src="../clock/0.jpg" />
+            <div class = "uhr">
+                <div class="date">
+                    <div class="www"></div>
+                    <div class="ddd"></div>
+                </div>
+                <div class="time">
+                    <div class="hm"></div>
+                    <div class="sss"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

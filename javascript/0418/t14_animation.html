@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>t14_animation.html</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    'use strict';
+    
+    function circleMove() {
+      let id = null;  // clear 위해 id 변수를 하나 줌
+      const circle = document.getElementById("circle");
+      let pos = 0;  // position 좌표=0
+      clearInterval(id);
+      id = setInterval(moveCircle, 10);
+      
+      function moveCircle() {
+        if(pos == 350) {
+          clearInterval(id);
+        }
+        else {
+          pos++;
+          circle.style.top = pos + "px";
+          circle.style.left = pos + "px";  // display: none;으로 주면됨
+        }
+      }
+    }
+  </script>
+  <style>
+    #content {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background-color: bisque;
+    }
+    #circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid black;
+      background-color: salmon;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+  <h2>Animation 연습</h2>
+  <hr/>
+  <div>
+    <input type="button" value="클릭" onclick="circleMove()" class="btn btn-success mb-3" />
+  </div>
+  <div id="content">
+    <div id="circle"></div>
+  </div>
+</div>
+</body>
+</html>
+
+<!--하나를 기준으로 ex 메뉴 line dropdown 부모:relative, 자식:absolute absolute가 relative 안에서만-->

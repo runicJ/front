@@ -11,40 +11,36 @@
       const minute = date.getMinutes();
       const second = date.getSeconds();
 
-      updateDigitPanel('hourTensPanelTop', Math.floor(hour / 10));
-      updateDigitPanel('hourTensPanelBottom', Math.floor(hour % 10));
-      updateDigitPanel('hourOnesPanelTop', Math.floor((hour % 100) / 10));
-      updateDigitPanel('hourOnesPanelBottom', hour % 10);
+      updateDigit('hourLeftTop', Math.floor(hour / 10));
+      updateDigit('hourLeftBottom', Math.floor(hour % 10));
+      updateDigit('hourRightTop', Math.floor((hour % 100) / 10));
+      updateDigit('hourRightBottom', hour % 10);
 
-      updateDigitPanel('minuteTensPanelTop', Math.floor(minute / 10));
-      updateDigitPanel('minuteTensPanelBottom', minute % 10);
-      updateDigitPanel('minuteOnesPanelTop', Math.floor((minute % 100) / 10));
-      updateDigitPanel('minuteOnesPanelBottom', minute % 10);
+      updateDigit('minLeftTop', Math.floor(minute / 10));
+      updateDigit('minLeftBottom', minute % 10);
+      updateDigit('minRightTop', Math.floor((minute % 100) / 10));
+      updateDigit('minRightBottom', minute % 10);
 
-      updateDigitPanel('secondTensPanelTop', Math.floor(second / 10));
-      updateDigitPanel('secondTensPanelBottom', second % 10);
-      updateDigitPanel('secondOnesPanelTop', Math.floor((second % 100) / 10));
-      updateDigitPanel('secondOnesPanelBottom', second % 10);
+      updateDigit('secLeftTop', Math.floor(second / 10));
+      updateDigit('secLeftBottom', second % 10);
+      updateDigit('secRightTop', Math.floor((second % 100) / 10));
+      updateDigit('secRightBottom', second % 10);
     }
 
-    function updateDigitPanel(panelId, digit) {
+    function updateDigit(panelId, digit) {
       const panel = document.getElementById(panelId);
-      const topDigit = Math.floor(digit / 5); // 상위 자리 숫자 (숫자 이미지 간격 고려)
-      const bottomDigit = digit % 5; // 하위 자리 숫자 (숫자 이미지 간격 고려)
+      const topDigit = Math.floor(digit / 5);
+      const bottomDigit = digit % 5;
 
-      // 숫자 변경 전에 애니메이션 클래스를 추가하여 위로 올라가는 효과를 줍니다.
       panel.classList.add('flipped');
 
       setTimeout(() => {
-        // 이미지의 src를 변경하여 다음 숫자로 전환합니다.
         panel.querySelector('.top').innerHTML = `<img src="clock/${topDigit}a.jpg" alt="${topDigit}">
                                                   <img src="clock/${topDigit}b.jpg" alt="${topDigit}">`;
         panel.querySelector('.bottom').innerHTML = `<img src="clock/${bottomDigit}a.jpg" alt="${bottomDigit}">
-                                                     <img src="clock/${bottomDigit}b.jpg" alt="${bottomDigit}">`;
-
-        // 애니메이션 효과를 위해 다시 애니메이션 클래스를 제거합니다.
+                                                    <img src="clock/${bottomDigit}b.jpg" alt="${bottomDigit}">`;
         panel.classList.remove('flipped');
-      }, 500); // 애니메이션 시간(초)에 맞게 설정하세요
+      }, 500);
     }
 
     window.addEventListener('DOMContentLoaded', function() {
@@ -53,11 +49,17 @@
     });
   </script>
   <style>
+    .clock {
+      background-image: url("clock/see-wood.jpg");
+      max-width: 90%;
+      height: auto;
+    }
+
     .digit-container {
       display: inline-block;
       position: relative;
-      width: 100px; /* 숫자 하나의 너비에 따라 조절하세요 */
-      height: 100px; /* 숫자 하나의 높이에 따라 조절하세요 */
+      width: 100px;
+      height: 100px;
     }
     
     .digit-panel {
@@ -65,7 +67,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: auto; /* 숫자 하나를 반으로 나눈 크기입니다. */
+      height: auto;
       overflow: hidden;
     }
     
@@ -73,23 +75,22 @@
       display: block;
       width: 100%;
       height: 100%;
-      transition: transform 0.5s ease; /* 회전 애니메이션 설정 */
+      transition: transform 0.5s ease;
     }
 
     /* .flipped .digit-panel .bottom img:last-child {
       transform: translateY(-100%);
     } */
     .digit-panel .bottom {
-      transform: rotateX(180deg);
+      transform: rotateX(-180deg);
     }
   </style>
 </head>
 <body>
   <div class="clock">
-    <!-- 시간을 나타내는 각 숫자 패널들 -->
     <div class="digit-container" id="hourTens">
-      <div class="digit-panel" id="hourTensPanel">
-        <div class="top">
+      <div class="digit-panel" id="hourLeft">
+        <div class="top" id="hourLeftTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
           <img src="clock/2a.jpg" alt="0">
@@ -101,7 +102,7 @@
           <img src="clock/8a.jpg" alt="0">
           <img src="clock/9a.jpg" alt="0">
         </div>
-        <div class="bottom">
+        <div class="bottom" id="hourLeftBottom">
           <img src="clock/0b.jpg" alt="0">
           <img src="clock/1b.jpg" alt="0">
           <img src="clock/2b.jpg" alt="0">
@@ -116,8 +117,8 @@
       </div>
     </div>
     <div class="digit-container" id="hourOnes">
-      <div class="digit-panel" id="hourOnesPanel">
-        <div class="top">
+      <div class="digit-panel" id="hourRight">
+        <div class="top" id="hourRightTop">
         <img src="clock/0a.jpg" alt="0">
         <img src="clock/1a.jpg" alt="0">
         <img src="clock/2a.jpg" alt="0">
@@ -129,7 +130,7 @@
         <img src="clock/8a.jpg" alt="0">
         <img src="clock/9a.jpg" alt="0">
       </div>
-      <div class="bottom"></div>
+      <div class="bottom" id="hourRightBottom"></div>
         <img src="clock/0b.jpg" alt="0">
         <img src="clock/1b.jpg" alt="0">
         <img src="clock/2b.jpg" alt="0">
@@ -143,10 +144,9 @@
       </div>
     </div>
     </div>
-    <!-- 분에 대한 숫자 패널 -->
     <div class="digit-container" id="minuteTens">
-      <div class="digit-panel" id="minuteTensPanel">
-        <div class="top">
+      <div class="digit-panel" id="minLeft">
+        <div class="top" id="minLeftTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
           <img src="clock/2a.jpg" alt="0">
@@ -158,7 +158,7 @@
           <img src="clock/8a.jpg" alt="0">
           <img src="clock/9a.jpg" alt="0">
         </div>
-        <div class="bottom"></div>
+        <div class="bottom" id="minLeftBottom"></div>
           <img src="clock/0b.jpg" alt="0">
           <img src="clock/1b.jpg" alt="0">
           <img src="clock/2b.jpg" alt="0">
@@ -173,8 +173,8 @@
       </div>
     </div>
     <div class="digit-container" id="minuteOnes">
-      <div class="digit-panel" id="minuteOnesPanel">
-        <div class="top">
+      <div class="digit-panel" id="minRight">
+        <div class="top" id="minRightTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
           <img src="clock/2a.jpg" alt="0">
@@ -186,7 +186,7 @@
           <img src="clock/8a.jpg" alt="0">
           <img src="clock/9a.jpg" alt="0">
         </div>
-        <div class="bottom"></div>
+        <div class="bottom" id="minRightBottom">
           <img src="clock/0b.jpg" alt="0">
           <img src="clock/1b.jpg" alt="0">
           <img src="clock/2b.jpg" alt="0">
@@ -200,10 +200,9 @@
         </div>
       </div>
     </div>
-    <!-- 초에 대한 숫자 패널 -->
     <div class="digit-container" id="secondTens">
-      <div class="digit-panel" id="secondTensPanel">
-        <div class="top">
+      <div class="digit-panel" id="secLeft">
+        <div class="top" id="secLeftTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
           <img src="clock/2a.jpg" alt="0">
@@ -215,7 +214,7 @@
           <img src="clock/8a.jpg" alt="0">
           <img src="clock/9a.jpg" alt="0">
         </div>
-        <div class="bottom"></div>
+        <div class="bottom" id="secLeftBottom">
           <img src="clock/0b.jpg" alt="0">
           <img src="clock/1b.jpg" alt="0">
           <img src="clock/2b.jpg" alt="0">
@@ -230,8 +229,8 @@
       </div>
     </div>
     <div class="digit-container" id="secondOnes">
-      <div class="digit-panel" id="secondOnesPanel">
-        <div class="top">
+      <div class="digit-panel" id="secRight">
+        <div class="top" id="secRightTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
           <img src="clock/2a.jpg" alt="0">
@@ -243,7 +242,7 @@
           <img src="clock/8a.jpg" alt="0">
           <img src="clock/9a.jpg" alt="0">
         </div>
-        <div class="bottom"></div>
+        <div class="bottom" id="secRightBottom">
           <img src="clock/0b.jpg" alt="0">
           <img src="clock/1b.jpg" alt="0">
           <img src="clock/2b.jpg" alt="0">

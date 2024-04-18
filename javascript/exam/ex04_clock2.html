@@ -30,20 +30,17 @@
 
     function setDigitPanel(panelId, digit) {
         const panel = document.getElementById(panelId);
-        const imagePath = 'clock/'; // 이미지 경로 설정
+        const imagePath = 'clock/';
 
-        // 이미지의 src를 변경하여 다음 숫자로 전환
         panel.innerHTML = `
             <img src="${imagePath}${digit}.jpg" alt="${digit}">
-            <img src="${imagePath}${digit}.jpg" alt="${digit}">`; // 숫자가 반복되도록 이미지를 두 번 추가합니다.
+            <img src="${imagePath}${digit}.jpg" alt="${digit}">`;
 
-        // 애니메이션을 트리거하기 위해 flipped 클래스를 추가합니다.
         panel.classList.add('flipped');
 
-        // 애니메이션이 끝난 후에 flipped 클래스를 제거하여 초기 상태로 복원합니다.
         setTimeout(() => {
             panel.classList.remove('flipped');
-        }, 500); // 애니메이션 시간(초)에 맞게 설정하세요
+        }, 500);
     }
 
     window.addEventListener('DOMContentLoaded', function() {
@@ -52,11 +49,17 @@
     });
   </script>
   <style>
+    .clock {
+      background-image: url("clock/see-wood.jpg");
+      max-width: 90%;
+      height: auto;
+    }
+
     .digit-container {
       display: inline-block;
       position: relative;
-      width: 300px;
-      height: 350px;
+      width: 200px;
+      height: 250px;
       overflow: hidden;
     }
 
@@ -67,8 +70,7 @@
         transition: transform 0.5s ease-in-out;
         width: 100%;
         height: 100%;
-        overflow: hidden; /* 내부 이미지를 잘라내도록 설정합니다. */
-        position: relative;
+        overflow: hidden;
     }
 
     .digit-panel img {
@@ -79,7 +81,7 @@
     }
 
     .flipped {
-    transform: rotateX(90deg); /* X축을 기준으로 90도 회전하여 반으로 접힌 효과를 줍니다. */
+    transform: rotateX(90deg);
     }
   </style>
 </head>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    'use strict';
+
+    let mx, my;
+    let flag = 0;
+
+    function move_start(e, sw) {  // sw로 체크  // 충돌에 대한 것도 있음
+      let circle = document.getElementById("circle");
+      mx = e.clientX - circle.offsetLeft;  // clientX 내 위치
+      my = e.clientY - circle.offsetTop;
+      flag = sw;
+    }
+
+    function move(e) {
+      if(flag == 0) return false;
+
+      let circle = document.getElementById("circle");
+      let x = e.clientX - mx;
+      let y = e.clientY - my;
+
+      if(x > 0) circle.style.left = x + "px";
+      if(y > 0) circle.style.top = y + "px";
+      
+      flag = sw;
+    }
+
+    function move_stop(e, sw) {
+      flag = sw;  // 스위치에 0이 들어오면 끝남
+    }
+  </script>
+  <style>
+    #circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 1px solid black;
+      background-color: salmon;
+      position: absolute;
+      left: 100px;
+      top: 100px;
+      z-index: 99;
+    }
+  </style>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+  <h2>offsetLeft, offsetTop</h2>
+  <p>onmousedown()/onmouseup()/onmousemove()</p>
+  <hr/>
+  <p>마우스로 물체 이동시키기</p>
+  <div id="circle" onmousedown="move_start(event, 1)" onmouseup="move_stop(event, 0)" onmousemove="move(event)">
+  </div>
+  <hr/>
+  <div id="demo"></div>
+</div>
+</body>
+</html>
