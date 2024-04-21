@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>t5.html</title>
-  <link href="https://fonts.cdnfonts.com/css/alarm-clock" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/alarm-clock" rel="stylesheet">>
   <script>
     'use strict';
-
+ 
     document.addEventListener('DOMContentLoaded', function(){
         updateTime(); 
-
+ 
         setInterval(updateTime, 1000);
-
+ 
         function updateTime() {
             let today = new Date();
             let hh = today.getHours();
@@ -20,28 +20,27 @@
             let ss = today.getSeconds();
         
             let dd = today.getDate();
-
+ 
             hh = hh < 10 ? '0' + hh : hh;
             mm = mm < 10 ? '0' + mm : mm;
             ss = ss < 10 ? '0' + ss : ss;
-
+ 
             const days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
             let dayIndex = today.getDay();
-
+ 
             let ww = days[dayIndex];
-
+ 
             const www = document.querySelector('.www');
             const ddd = document.querySelector('.ddd');
             const hm = document.querySelector('.hm');
             const sss = document.querySelector('.sss');
-
+ 
             www.innerHTML = `${ww}&nbsp;`;
             ddd.innerText = dd; 
             hm.innerHTML = `${hh}:${mm}`;
             sss.innerHTML = ss;
         }
     });
-
   </script>
   <style>
     body{
@@ -50,26 +49,23 @@
         background-color: black;
         justify-content: center;
         align-items: center;
-      }
-      .backimg{
+    }
+    .backimg{
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
-        background-image: url("../clock/see-wood.jpg");
-        width: 90px;
-        height: 90px;
-      }
-      /* .backimg img {
+    }
+    .backimg img {
         max-width: 90%;
         height: auto;
-      } */
-      .uhrimg{
+    }
+    .uhrimg{
         width: 7.8%;
         height: auto;
         position: absolute;
-        top:40.4%;
-        left:57.5%;
+        top: 40.4%;
+        left: 57.5%;
         display: flex;
         align-items: center;
     }
@@ -77,24 +73,26 @@
     .uhrimg img{
         max-width: 100%;
         height: auto;
+        transition: transform 1s ease-in;
     }
     .uhr {
         font-family: 'alarm clock', sans-serif;
         transform: rotate(5deg);
         position: absolute;
         width: 86%;
-        height: 100%;
+        height: auto;
         max-height: 100%;
         display: flex;
         flex-direction: column;
-        top: 17.6%;
-        left: 4%;
+        top: 18%;
+        left: 10%;
+        transition: font-size 1s ease-in;
     }
     .date, .time {
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
-        width: 100%;
+        width: 90%;
         height: auto;
         max-height: 100%;
     }
@@ -110,36 +108,39 @@
         font-size: 1.3vw;
         font-weight: bold;
     }
+    .uhrimg:hover .www,
+    .uhrimg:hover .ddd,
+    .uhrimg:hover .hm,
+    .uhrimg:hover .sss {
+        transition: font-size 1s ease-in;
+    }
     .uhrimg:hover .uhr{
-        top :-8%;
-        left: 10%;
+        top: -5%;
+        left: 22%;
         max-width: 200%;
     }
     .uhrimg:hover img{
-        max-width: 200%;
-        transform: translate(-25%, -25%);
+        transform: scale(1.8) translate(-13%, -5%);
     }   
     .uhrimg:hover .www,
     .uhrimg:hover .ddd {
-        font-size: 1.8vw;      
+        font-size: 2vw;      
     }
     .uhrimg:hover .hm {
-        font-size: 2.4vw;  
+        font-size: 3vw;  
     }
     .uhrimg:hover .sss {
-        font-size: 2vw;  
+        font-size: 2.5vw;  
     }
-
-    
   </style>
 </head>
 <body>
 <div>
-    <div class="backimg" >
-        <!-- <img src="../clock/see-wood.jpg" /> -->
+    <div class="backimg">
+        <img src="../clock/casio.jpg" />
         <div class="uhrimg">
-            <img src="../clock/0.jpg" />
-            <div class = "uhr">
+            <img src="../clock/Uhr.png" />
+            <div class="uhr">
                 <div class="date">
                     <div class="www"></div>
                     <div class="ddd"></div>
@@ -151,7 +152,6 @@
             </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>

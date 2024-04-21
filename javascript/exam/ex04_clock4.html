@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>디지털 시계</title>
+  <script>
+    'use strict';
+
+    function updateTime() {
+      const today = new Date();
+      const hour = today.getHours().toString().padStart(2, '0');
+      const min = today.getMinutes().toString().padStart(2, '0');
+      const sec = today.getSeconds().toString().padStart(2, '0');
+
+      updateDigit('hourLeft', hour[0]);
+      updateDigit('hourRight', hour[1]);
+
+      updateDigit('minLeft', min[0]);
+      updateDigit('minRight', min[1]);
+
+      updateDigit('secLeft', sec[0]);
+      updateDigit('secRight', sec[1]);
+    }
+
+    function updateDigit(boardId, digit) {
+      const board = document.getElementById(boardId);
+
+      // board.querySelector(".bottom").classList.add('flipped');
+      board.classList.add('flipped');
+
+      setTimeout(() => {
+        board.querySelector('.top img').src = `clock/${digit}a.jpg`;
+        setTimeout(() => {
+          board.querySelector('.bottom img').src = `clock/${digit}b.jpg`;
+          board.classList.remove('flipped');
+        }, 500);
+      }, 500);
+    }
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      updateTime();
+      setInterval(updateTime, 1000);
+    });
+  </script>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+    }
+    .clock {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .clock img {
+      max-width: 90%;
+      height: auto;
+      z-index: 1;
+    }
+
+    .boardImg {
+      width: 40%;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      display: flex;
+      align-items: center;
+      transform: translate(-50%, -400%);
+    }
+    
+    .boardImg img {
+      max-width: 500px;
+      height: auto;
+      /* transition: transform 1s ease-in; */
+      z-index: 2;
+      perspective: 1000px;
+    }
+    
+    .digit-container {
+      font-family: 'alarm clock', sans-serif;
+      /* transform: rotate(-5deg); */
+      position: flex;
+      width: 20%;
+      height: auto;
+      max-height: 100%;
+      display: inline-block;
+      top: 10%;
+      left: 0%;
+      transform-style: preserve-3d;
+      /* transition: font-size 1s ease-in; */
+    }
+    
+    .digit-container img {
+      max-width: 100px;
+      height: auto;
+      z-index: 3;
+    }
+    
+    /* .top .bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: 90%;
+      height: auto;
+      max-height: 100%;
+    } */
+
+    .flipped {
+      transform: rotateX(-180deg);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img src="clock/see-wood.jpg"/>
+  <div class="clock">
+    <div class="boardImg">
+      <img src="clock/clock.jpg"/>
+      <div class="digit-container" id="hourLeft">
+          <div class="top" id="hourLeftTop"><img src="" alt=""></div>
+          <div class="bottom" id="hourLeftBottom"><img src="" alt=""></div>
+      </div>
+      <div class="digit-container" id="hourRight">
+          <div class="top" id="hourRightTop"><img src="" alt=""></div>
+          <div class="bottom" id="hourRightBottom"><img src="" alt=""></div>
+      </div>
+      <div class="digit-container" id="minLeft">
+          <div class="top" id="minLeftTop"><img src="" alt=""></div>
+          <div class="bottom" id="minLeftBottom"><img src="" alt=""></div>
+      </div>
+      <div class="digit-container" id="minRight">
+          <div class="top" id="minRightTop"><img src="" alt=""></div>
+          <div class="bottom" id="minRightBottom"><img src="" alt=""></div>
+      </div>
+      <div class="digit-container" id="secLeft">
+          <div class="top" id="secLeftTop"><img src="" alt=""></div>
+          <div class="bottom" id="secLeftBottom"><img src="" alt=""></div>
+      </div>
+      <div class="digit-container" id="secRight">
+          <div class="top" id="secRightTop"><img src="" alt=""></div>
+          <div class="bottom" id="secRightBottom"><img src="" alt=""></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

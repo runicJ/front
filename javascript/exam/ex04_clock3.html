@@ -38,26 +38,37 @@
         panel.querySelector('.top').innerHTML = `<img src="clock/${topDigit}a.jpg" alt="${topDigit}">
                                                   <img src="clock/${topDigit}b.jpg" alt="${topDigit}">`;
         panel.querySelector('.bottom').innerHTML = `<img src="clock/${bottomDigit}a.jpg" alt="${bottomDigit}">
-                                                    <img src="clock/${bottomDigit}b.jpg" alt="${bottomDigit}">`;
+                                                        <img src="clock/${bottomDigit}b.jpg" alt="${bottomDigit}">`;
         panel.classList.remove('flipped');
       }, 500);
     }
-
     window.addEventListener('DOMContentLoaded', function() {
       updateTime();
       setInterval(updateTime, 1000);
     });
   </script>
   <style>
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
     .clock {
-      background-image: url("clock/see-wood.jpg");
-      max-width: 90%;
-      height: auto;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .clock img {
+        max-width: 80%;
+        height: auto;
     }
 
     .digit-container {
       display: inline-block;
-      position: relative;
+      position: absolute;
       width: 100px;
       height: 100px;
     }
@@ -81,15 +92,25 @@
     /* .flipped .digit-panel .bottom img:last-child {
       transform: translateY(-100%);
     } */
-    .digit-panel .bottom {
+    /* .digit-panel .bottom {
+      transform: rotateX(-180deg);
+    } */
+    .hour.flipped {
+      transform: rotateX(-180deg);
+    }
+    .minute.flipped {
+      transform: rotateX(-180deg);
+    }
+    .second.flipped {
       transform: rotateX(-180deg);
     }
   </style>
 </head>
 <body>
   <div class="clock">
+    <img src="clock/see-wood.jpg"/>
     <div class="digit-container" id="hourTens">
-      <div class="digit-panel" id="hourLeft">
+      <div class="digit-panel hour" id="hourLeft">
         <div class="top" id="hourLeftTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
@@ -117,7 +138,7 @@
       </div>
     </div>
     <div class="digit-container" id="hourOnes">
-      <div class="digit-panel" id="hourRight">
+      <div class="digit-panel hour" id="hourRight">
         <div class="top" id="hourRightTop">
         <img src="clock/0a.jpg" alt="0">
         <img src="clock/1a.jpg" alt="0">
@@ -145,7 +166,7 @@
     </div>
     </div>
     <div class="digit-container" id="minuteTens">
-      <div class="digit-panel" id="minLeft">
+      <div class="digit-panel minute" id="minLeft">
         <div class="top" id="minLeftTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
@@ -173,7 +194,7 @@
       </div>
     </div>
     <div class="digit-container" id="minuteOnes">
-      <div class="digit-panel" id="minRight">
+      <div class="digit-panel minute" id="minRight">
         <div class="top" id="minRightTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
@@ -201,7 +222,7 @@
       </div>
     </div>
     <div class="digit-container" id="secondTens">
-      <div class="digit-panel" id="secLeft">
+      <div class="digit-panel second" id="secLeft">
         <div class="top" id="secLeftTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">
@@ -229,7 +250,7 @@
       </div>
     </div>
     <div class="digit-container" id="secondOnes">
-      <div class="digit-panel" id="secRight">
+      <div class="digit-panel second" id="secRight">
         <div class="top" id="secRightTop">
           <img src="clock/0a.jpg" alt="0">
           <img src="clock/1a.jpg" alt="0">

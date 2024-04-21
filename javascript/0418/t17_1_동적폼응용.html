@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>t16_동적폼.html</title>
+  <title>t17_동적폼응용.html</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -37,31 +37,30 @@
 
     function productChoice() {
       let product = document.getElementById("product").value;
-      alert("상품 : " + product);
-
+      // alert("상품 : " + product);
       let product1Arr = ["S : 5000","M : 10000","L : 15000","XL : 20000","XXL : 25000"];
       let product1ValueArr = [5000,10000,15000,20000,25000];
+
+      let selectedProduct = document.getElementById("product").selectedProduct;
+      myform.price.value = product1ValueArr[selectedProduct];
     }
 
     function cartSend() {
-      // newCart = '';
-      // let product = myform.product.value;
-      // let ea = myform.ea.value;
-      // let price = myform.price.value;
-      // newCart += '<div class="row" id="cartRow'+idx+'">';
-      // newCart += '<div id="cartCol'+idx+'" class="col form-control mb-3 mr-1" />';
-      // newCart += '<div class="input-group-append">';
-      // newCart += '<input type="button" value="'+idx+'.삭제" onclick="deleteBox('+idx+')" class="btn btn-sm btn-danger mb-3" />';
-      // newCart += '</div>';
-      // newCart += '</div>';
-      // demoCart.innerHTML = newCart;
+      let product = myform.product.value;
+      let ea = myform.ea.value;
+      let price = myform.price.value;
+      let vat = price * ea * 0.1;
+      let totalPrice = price * ea + vat;
 
-      let product = ['수영복','튜브','보트','물안경','오리발'];
-      // let productText ['']
-      // let productValue []
-
-      demoCart.innerHTML = 
+      let newCart = '<div class="row" id="cartRow">';
+      newCart += '<div class="col">' + product + '</div>';
+      newCart += '<div class="col">' + price + '</div>';
+      newCart += '<div class="col">' + ea + '</div>';
+      newCart += '<div class="col">' + numberWithCommas(totalPrice) + '원</div>';
+      newCart += '</div>';
+      demoCart.innerHTML += newCart;
     }
+
     // 콤마 변환함수(1,234) // 항상 마지막에
     function numberWithCommas(num) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");  // \B 경계값이 아닌경우 삼항연산자 같은 개념 ?=만족할때 , ?! 만족하지 않을때
@@ -103,7 +102,7 @@
     <div class="row text-center">
       <input type="button" value="가격계산" onclick="priceCalc()" class="btn btn-success mr-3 col"/>
       <input type="button" value="VAT" onclick="vatCalc()" class="btn btn-primary mr-3 col"/>
-      <input type="button" value="총가격" onclick="totalCalc()" class="btn btn-info" col/>
+      <input type="button" value="총가격" onclick="totalCalc()" class="btn btn-info col"/>
       <span class="col"></span>
       <input type="button" value="장바구니" onclick="cartSend()" class="btn btn-warning mr-3 col"/>
       <input type="button" value="장바구니비우기" onclick="location.reload()" class="btn btn-danger col"/>

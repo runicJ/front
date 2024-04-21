@@ -16,7 +16,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      /* background: url(img/clock.png); */
+      background: url(img/clock.png);
       background-size: cover;
       border: 4px solid #1f1f1f;
       border-radius: 50%;
@@ -84,12 +84,12 @@
   </style>
   <script>
     'use strict';
-    function logoutCheck(){
-      let ans = '[안내]태그제한으로등록되지않습니다("로그아웃 하시겠습니까? (Y/N)")';
-      if(ans.trim().toUpperCase() == "Y"){
-        location.href = './login.html';
-      }
-    }
+    // function logoutCheck(){
+    //   let ans = [안내]태그제한으로등록되지않습니다("로그아웃 하시겠습니까? (Y/N)");
+    //   if(ans.trim().toUpperCase() == "Y"){
+    //     location.href = './login.html';
+    //   }
+    // }
     window.onload = function (){
       // 상단 랜덤 배경색주시
       let colors = ['white', '#ffe6e6','#ffffb3','#ffffb3','#f2e6ff','#e6f7ff','#ffddcc'];

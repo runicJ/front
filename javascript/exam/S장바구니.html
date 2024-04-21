@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOT SUMMER</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/@vectopus/atlas-icons/style.css" rel="stylesheet" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+ 
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            display: flex;
+            width: 85%; 
+            min-height: 100vh; 
+            flex-direction: column;
+            gap: 0px;
+            font-size: 20px;
+            font-family: "Gowun Dodum", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        #blackmenu {
+            position: absolute;
+            width: 100vw;
+            height: 230px;
+            background-color: black;
+            left: 0;
+            z-index: 2;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            z-index: 4;
+        }
+        .menu.opt{
+            color: white;
+        }
+        .mainimg {
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .mainimg img {
+            width: 100%;
+            aspect-ratio: 21/9;
+            
+            display: none;
+            z-index: -1;
+        }
+        .mainimg.hovered  img{
+            opacity: 0.8; 
+            transform: translateY(31%);
+        }
+        .ship {
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            width: 100%;
+            justify-content: space-around;
+            
+        }
+        .mainimg:hover img {
+            transition: transform 0.3s ease-in-out;
+            transform: scale(1.6) translate(-14%, 20%);
+            z-index: -1;
+        }
+        .mainimg img.active {
+            display: block;
+        }
+        .green {
+            background: linear-gradient(to right,#C7DAB5,#77BE94, #FFB703, #EA7700, #D1460B,#8ECAE6,#2571BC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 26px;
+            font-weight: bolder;
+        }
+        .mainPage {
+            position: relative;
+        }
+        .productPage {
+            visibility :hidden;
+            position: absolute;
+            top : 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black;
+            height: 80%;
+            width: 80%;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+           
+        }
+        .productIcon {
+            width: 50%;
+            font-size: 18vw;
+            text-align: center;
+        }
+        .optionMenu{
+            width: 50%;
+            margin: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #product {
+            padding-top: 5px;
+            width: 120px;
+            border: none;
+            background-color: black;
+            display: none; 
+            position: absolute; 
+            z-index: 3; 
+            overflow: hidden;
+            font-family: "Gowun Dodum", sans-serif;
+            font-weight: 200;
+            font-style: normal;  
+            font-size: 18px;  
+            color: white;
+        }
+        #product:focus {
+            outline: none;        
+        }
+        #product option {
+            margin-top: 2px;   
+        }
+        label:hover{
+            cursor: pointer;
+        }
+        #cartMenu {
+            position: fixed;
+            top: 0;
+            right: -500px; 
+            width: 500px;
+            height: calc(100vh - 60px);
+            background-color: white;
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+            color: black;
+            overflow-y: auto; 
+             
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); 
+            display: none; 
+            z-index: 999;
+        }
+        .topC {
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+            
+        }
+        hr {
+            width: 95%;
+            color: black;
+        }
+        .optionMenu button{
+            width: 20vw;
+            height: 5vh;
+            border: none;
+            background-color: #A2D9E0;
+            color: #527FE8;
+            font-family: "Gowun Dodum", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size:1.4vw;
+            font-weight: 700;
+        }
+        #addCart {
+            color: white;
+            background-color: #386EA5;
+        }
+        #addCart:hover {
+            cursor: pointer;
+            background-color:white;
+            color:#527FE8;
+            font-weight: 900;
+        }
+        
+        #farbe {
+            width: 20vw;
+            
+            border: none;  
+            overflow: hidden;
+            font-family: "Gowun Dodum", sans-serif;
+            font-weight: 200;
+            font-style: normal;  
+            font-size: 20px;  
+            background-color:  #F4F4F4;
+        }
+        .cartIcon {
+            font-size: 100px;
+        }
+        #many {
+            color: #2571BC;
+            right: 0;
+            font-size: 20px;
+            margin-top: 20%;
+            margin-left: 50%;
+        
+        }
+        input[type="number"]{
+            border: none;
+            width: 30px;
+            font-size: 20px;
+            color: #2571BC;
+        }
+        .many, .green, #cartButton, .topC i:hover{
+            cursor: pointer;
+        }
+        #total {
+            position: fixed;
+            bottom: 0;
+            width: 500px;
+            background-color: white;
+        }
+        .totalTxt{
+            margin: 15px;
+        }
+        .svt {
+            display: flex;
+            justify-content: space-between;
+        }
+ 
+    </style>
+ 
+ 
+</head>
+<body>
+    
+    <div class="container">
+        
+        
+        <div id ="menu" class="menu">
+            
+            <div class ="green" xxonclick="goBack()"><i class="at-sea" style="font-size: 34px;"></i></i> GRÜN</div>
+            <div class="shop">
+                <label for="product" xxonclick="toggleSelect()">SHOP</label>
+                <select name="product" id="product" size="6" xxonchange="productChoice()">
+                    <option>수영복</option>
+                    <option>튜브</option>
+                    <option>보트</option>
+                    <option>물안경</option>
+                    <option>오리발</option>
+                  </select>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div id="cartButton" xxonclick="openCart()" ><i class="bi bi-cart4"></i>(0) </div>
+            <div class= "cartMenu" id ="cartMenu"> 
+                <div class="topC">
+                    <div id="cntCart"><i class="bi bi-cart4"></i>(0)</div>
+                    <div id="closeIcon" >
+                        <i class="at-trash" xxonclick="deleteItem()" style ="margin-right: 10px;"></i>
+                        <i xxonclick="closeCart()" class="at-xmark-website"></i>
+                    </div>
+                    
+                </div>
+                <hr/>
+                <div id="addedItem">
+                </div>
+                <div id="total">
+                    <hr/>
+                    <div class="totalTxt">
+                        <div class="svt">
+                            <div>SUB-TOTAL</div>
+                            <div id="subTotal">0원</div>
+                        </div>
+                        <div class="svt">
+                            <div>VAT (10%)</div>
+                            <div id ="vat">0원</div>
+                        </div>
+                        <div class="svt">
+                            <div>총가격</div>
+                            <div id ="tot">0원</div>
+                        </div>
+                        
+                    </div>
+                </div>
+ 
+            </div>
+            <div id="overlay"></div>
+        </div>
+        <div id = "blackmenu" style="display: none;"></div>
+        <div class = "mainPage">
+            <div class="mainimg" id = "mainimg">
+                <img src="../images/hot.png" class="active" />
+                <img src="../images/hot1.png" />
+            </div>
+        <div class="productPage">
+            <div class="productIcon" id="productIcon"><i class="at-swim-shorts"></i></div>
+            <div class="optionMenu" id ="optionMenu">
+                <div>
+                <select name ="farbe" id="farbe" class="farbe" xxonchange="chooseColor(this)"></select>
+                </div>
+                <div id="many">
+                    <i class="bi bi-dash-circle-fill many" xxonclick="minus()"></i>
+                    <input type="number" id="number" min="1" max="10" value="1"/>
+                    <i class="bi bi-plus-circle-fill many" xxonclick="plus()"></i>
+                </div>
+                <div>
+                    <div><button type="button" id ="sizeButton" disabled>색상 선택</button></div>
+                    <div><button type="button" id ="addCart" style="display: none" xxonclick="addCart()">장바구니 담기</button></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="ship">
+            <div><i class="at-transport-truck"></i></i>  빠른배송</div>
+            <div><i class="bi bi-box-seam"></i>  무료반품</div>
+            <div><i class="bi bi-shield-check"></i>  안전결제</div>
+        </div>
+    </div>
+ 
+</body>
+<script>
+ 
+ 
+</script>
+<script src="cart.js"></script>
+</html>
