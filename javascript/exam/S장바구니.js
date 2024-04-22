@@ -87,46 +87,46 @@ let nummer;
 let priceSub=0;
 let productPrice;
  
-function addCart() {
+// function addCart() {
     
-    nummer = parseInt(number.value);
-    if(nummer<1 || nummer>10){
-        return false;
-    }
+//     nummer = parseInt(number.value);
+//     if(nummer<1 || nummer>10){
+//         return false;
+//     }
  
-    cnt += nummer;
+//     cnt += nummer;
  
-    let productName = colorMenu.product;
-    let iconImg = colorMenu.icon;
-    let iconColor = colorMenu.colors[selectedIndex-1].colorCode;
-    let productColor = colorMenu.colors[selectedIndex-1].color;
-    productPrice = colorMenu.colors[selectedIndex-1].price;
-    console.log(productPrice);
-    console.log(nummer);
+//     let productName = colorMenu.product;
+//     let iconImg = colorMenu.icon;
+//     let iconColor = colorMenu.colors[selectedIndex-1].colorCode;
+//     let productColor = colorMenu.colors[selectedIndex-1].color;
+//     productPrice = colorMenu.colors[selectedIndex-1].price;
+//     console.log(productPrice);
+//     console.log(nummer);
  
-    priceSub += Number(nummer*productPrice);
+//     priceSub += Number(nummer*productPrice);
  
     
  
-    document.getElementById("cartButton").innerHTML =`<i class="bi bi-cart4"></i>(${cnt})`;
-    document.getElementById("cntCart").innerHTML =`<i class="bi bi-cart4"></i>(${cnt})`;
+//     document.getElementById("cartButton").innerHTML =`<i class="bi bi-cart4"></i>(${cnt})`;
+//     document.getElementById("cntCart").innerHTML =`<i class="bi bi-cart4"></i>(${cnt})`;
     
-    let str = `<div class ="cartIcon" style="color:${iconColor};">${iconImg}</div>`;
-    let strT = `<div style ="margin-top : 20px; ">${productName}&nbsp;&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp;&nbsp;&nbsp;${numberWithCommas(productPrice)}원 
-    <p style="font-size :15px; color = darkgray; margin-top:10px;"> ${productColor}</p>
-    <p style="font-size :15px; color = darkgray; margin-top:10px;">수량 : ${nummer}개</p></div>`;
+//     let str = `<div class ="cartIcon" style="color:${iconColor};">${iconImg}</div>`;
+//     let strT = `<div style ="margin-top : 20px; ">${productName}&nbsp;&nbsp&nbsp&nbsp
+//     &nbsp&nbsp&nbsp&nbsp;&nbsp;&nbsp;${numberWithCommas(productPrice)}원 
+//     <p style="font-size :15px; color = darkgray; margin-top:10px;"> ${productColor}</p>
+//     <p style="font-size :15px; color = darkgray; margin-top:10px;">수량 : ${nummer}개</p></div>`;
    
  
-    let combinedStr = `<div style="display: flex; flex-direction: row; justify-content: space-evenly;">${str} ${strT}</div>`;
+//     let combinedStr = `<div style="display: flex; flex-direction: row; justify-content: space-evenly;">${str} ${strT}</div>`;
     
-    document.getElementById('addedItem').innerHTML += combinedStr;
-    subTotal.innerHTML = numberWithCommas(priceSub) + "원";
-    vatCalc();
-    totalCalc();
+//     document.getElementById('addedItem').innerHTML += combinedStr;
+//     subTotal.innerHTML = numberWithCommas(priceSub) + "원";
+//     vatCalc();
+//     totalCalc();
  
-    initNummer()
-}
+//     initNummer()
+// }
  
  
 // VAT계산(총가격이 10%)
@@ -307,3 +307,65 @@ class ColorMenu{
  
     }
 }
+
+function addCart() {
+ 
+    let productName = colorMenu.product;
+    let iconImg = colorMenu.icon;
+    let iconColor = colorMenu.colors[selectedIndex-1].colorCode;
+    let productColor = colorMenu.colors[selectedIndex-1].color;
+    productPrice = colorMenu.colors[selectedIndex-1].price;
+ 
+    let itemFound = false;
+ 
+    nummer = parseInt(number.value);
+    if(nummer<1 || nummer>10){
+        return false;
+    }
+ 
+    priceSub += nummer*productPrice;
+ 
+    cnt += nummer;
+   
+    let items = document.querySelectorAll("[id^='item-']");
+ 
+    items.forEach((item)=>{
+        let itemInfo = item.className.split(' ');
+        //let itemPrice = itemInfo[0];
+        let itemcNT = Number(itemInfo[3]); 
+        let itemColor = itemInfo[1];
+        let itemName = itemInfo[2];
+        itemcNT += nummer;
+ 
+        if(productName==itemName && productColor==itemColor){
+            let strU  = `수량 : ${itemcNT}개`;
+            item.querySelector(".cartQ").innerHTML = strU; 
+            itemFound = true;
+ 
+            item.classList.remove(itemInfo[3]);
+            item.classList.add(itemcNT);
+        }
+  
+    });
+ 
+    if(!itemFound){
+        let itemId = generateId();
+        let str = 
+            `<div id="${itemId}" class="${productPrice} ${productColor} ${productName} ${nummer}">
+                <div class="cartItem" style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                    <div class="cartIcon" style="color:${iconColor};">${iconImg}</div>
+                    <div class="cartInfo">
+                        <div style="margin-top: 20px;">${productName}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${numberWithCommas(productPrice)}원</div>
+                        <div style="font-size: 15px; color: darkgray; margin-top: 10px;">${productColor}</div>
+                        <div class="cartQ" style="font-size: 15px; color: darkgray; margin-top: 10px;">수량 : ${nummer}개</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column-reverse; margin-bottom: 30px;">
+                        <i class="at-trash" xxxxonclick="removeItem('${itemId}')"></i>
+                    </div>
+                </div>
+                <hr/>
+            </div>`;
+        
+        document.getElementById('addedItem').innerHTML += str;
+    }
+

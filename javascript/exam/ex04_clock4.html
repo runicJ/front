@@ -26,7 +26,7 @@
     function updateDigit(boardId, digit) {
       const board = document.getElementById(boardId);
 
-      // board.querySelector(".bottom").classList.add('flipped');
+      // board.querySelector(".bottom img").classList.add('flipped');
       board.classList.add('flipped');
 
       setTimeout(() => {
@@ -54,6 +54,7 @@
     .container {
       position: relative;
     }
+
     .clock {
       display: flex;
       justify-content: center;
@@ -71,11 +72,11 @@
       width: 40%;
       height: auto;
       position: absolute;
-      top: 50%;
-      left: 40%;
+      top: 0;
+      left: 0;
       display: flex;
       align-items: center;
-      transform: translate(-50%, -400%);
+      /* transform: translate(-50%, -400%); */
     }
     
     .boardImg img {
@@ -94,8 +95,8 @@
       height: auto;
       max-height: 100%;
       display: inline-block;
-      top: 10%;
-      left: 0%;
+      top: -50%;
+      left: -50%;
       transform-style: preserve-3d;
       /* transition: font-size 1s ease-in; */
     }
@@ -114,6 +115,10 @@
       height: auto;
       max-height: 100%;
     } */
+
+    .bottom {
+      transition: transform 0.8s ease-in;
+    }
 
     .flipped {
       transform: rotateX(-180deg);

@@ -73,7 +73,6 @@
     .uhrimg img{
         max-width: 100%;
         height: auto;
-        transition: transform 1s ease-in;
     }
     .uhr {
         font-family: 'alarm clock', sans-serif;
@@ -86,7 +85,6 @@
         flex-direction: column;
         top: 18%;
         left: 10%;
-        transition: font-size 1s ease-in;
     }
     .date, .time {
         display: flex;
@@ -121,6 +119,7 @@
     }
     .uhrimg:hover img{
         transform: scale(1.8) translate(-13%, -5%);
+        transition: transform 1s ease-in;
     }   
     .uhrimg:hover .www,
     .uhrimg:hover .ddd {
