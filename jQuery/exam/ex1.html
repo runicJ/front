@@ -8,64 +8,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>t20_fadeIn_Out.html</title>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+  <title>ex1.html</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     'use strict';
 
     $(function(){
-      let ani1 = Math.random()*5000 + 4000;
-      let ani2 = Math.random()*5000 + 4000;
-      let ani3 = Math.random()*5000 + 4000;
+      let ani1 = Math.random()*2000 + 4000;
+      let ani2 = Math.random()*2000 + 4000;
+      let ani3 = Math.random()*2000 + 4000;
+      let ani4 = Math.random()*2000 + 4000;
+      let ani5 = Math.random()*2000 + 4000;
+      let cnt = 0;
+      let rank = [];
       
       $("#startBtn").on('click',function() {
         $('#horse1').animate({
-          marginLeft: '500px'
+          marginLeft: '800px'
         }, ani1, function(){
-          // ??
+          cnt++;
+          rank.push("번개");
+          if(cnt == 5) victory();
         });
         $('#horse2').animate({
-          marginLeft: '500px'
+          marginLeft: '800px'
         }, ani2, function(){
-          // ??
+          cnt++;
+          rank.push("영웅");
+          if(cnt == 5) victory();
         });
         $('#horse3').animate({
-          marginLeft: '500px'
+          marginLeft: '800px'
         }, ani3, function(){
-          // ??
+          cnt++;
+          rank.push("승리");
+          if(cnt == 5) victory();
+        });
+        $('#horse4').animate({
+          marginLeft: '800px'
+        }, ani4, function(){
+          cnt++;
+          rank.push("토르");
+          if(cnt == 5) victory();
+        });
+        $('#horse5').animate({
+          marginLeft: '800px'
+        }, ani5, function(){
+          cnt++;
+          rank.push("아레스");
+          if(cnt == 5) victory();
         });
 
-        victory();
+        // if(!$('#horse1').is(':animated') && !$('#horse2').is(':animated') && !$('#horse3').is(':animated') 
+        // && !$('#horse4').is(':animated') && !$('#horse5').is(':animated')) {
+        //   victory();
+        // }
       });
 
       function victory() {
         let str = '';
         str += '<h2>결과</h2>';
-        str += `번개 달린 시간 : ${ani1}<br/>`;  // 등수로 구해야함
-        str += `영웅 달린 시간 : ${ani2}<br/>`;
-        str += `승리 달린 시간 : ${ani3}`;
+        str += `1등 : ${rank[0]} / 시간 : ${ani1}<br/>`;
+        str += `2등 : ${rank[1]} / 시간 : ${ani2}<br/>`;
+        str += `3등 : ${rank[2]} / 시간 : ${ani3}<br/>`;
+        str += `4등 : ${rank[3]} / 시간 : ${ani4}<br/>`;
+        str += `5등 : ${rank[4]} / 시간 : ${ani5}`;
 
         demo.innerHTML = str;
+
+        // $('#demo').html(str);
+    
+        $('.horse img').addClass('paused');
+        $(".line").css("opacity","0.2");
       }
     });
   </script>
   <style>
     body { margin:0px; }
-    #horse1 {
-      /* background-color: green; */
-      color: orange;
+    .container {
+      position: relative;
     }
-    #horse2 {
-      /* background-color: yellow; */
-      color: blue;
+    h2 {
+      text-align: center;
+      background-color: #833223;
+      color:blanchedalmond;
+      border: 2px dashed white;
+      padding: 7px 0;
+      font-weight: bold;
     }
-    #horse3 {
-      /* background-color: red; */
-      color: green;
+    img {
+      width:150px;
+      height: auto;
+      z-index: 2;
+    }
+    .horse {
+      z-index: 2;
+    }
+    .line {
+      position:absolute;
+      top:170px;
+      left: 880px;
+      height: 550px;
+      width: 8px;
+      background-color: red;
+      z-index: 1;
+      opacity: 0.7;
+    }
+    .goal {
+      position: absolute;
+      top: 170px;
+      right: 200px;
+      transform: rotate(-90deg);
+      transform-origin: top right;
+      width: 550px;
+      height: 120px;
+      font-size: 60px;
+      opacity: 0.8;
+      background-color: #833223;
+      color: white;
+      font-weight: bolder;
+      padding: 10px 5px;
+      text-align: center;
+      /* writing-mode: vertical-rl; */
+    }
+    #demo {
+      text-align: center;
+      background-color: #f5f3e7;
+      font-size: 20px;
+      font-weight: bold;
+
     }
   </style>
 </head>
@@ -74,11 +149,16 @@
 <div class="container">
   <h2>달리기 시합</h2>
   <hr/>
-  <button id="startBtn">출발</button>
+  <button id="startBtn" class="btn btn-primary ml-1 mr-3">경주시작</button>
+  <button id="resetBtn" class="btn btn-success" onclick="location.reload()">다시하기</button>
   <hr/>
-  <div id="horse1">번개</div>
-  <div id="horse2">영웅</div>
-  <div id="horse3">승리</div>
+  <div class="horse mb-1" id="horse1"><img src="run1.gif" alt="번개"></div>
+  <div class="horse mb-1" id="horse2"><img src="run2.gif" alt="영웅"></div>
+  <div class="horse mb-1" id="horse3"><img src="run3.gif" alt="승리"></div>
+  <div class="horse mb-1" id="horse4"><img src="run4.gif" alt="토르"></div>
+  <div class="horse" id="horse5"><img src="run5.gif" alt="아레스"></div>
+  <div class="line"></div>
+  <span class="goal">GOAL</span>
   <hr/>
   <div id="demo"></div>
 </div>
