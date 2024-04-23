@@ -12,7 +12,7 @@
 
     function move_start(e, sw) {  // sw로 체크  // 충돌에 대한 것도 있음
       let circle = document.getElementById("circle");
-      mx = e.clientX - circle.offsetLeft;  // clientX 내 위치
+      mx = e.clientX - circle.offsetLeft;  // clientX 내 위치  // offsetLeft 요소의 X축 위치 값
       my = e.clientY - circle.offsetTop;
       flag = sw;
     }

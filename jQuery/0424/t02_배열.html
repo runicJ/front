@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>t02_배열.html</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    'use strict';
+
+    $(function(){
+      $('#btn1').on('click', function(){
+        let show = $('.container div:visible');  // container 자손 div  // > div 자식  // 여러개니까 배열로 나옴
+        console.log(show);  // object객체
+        console.log("======================================");
+
+        // let showArray = new Array();
+        let showArray = [];
+        for(let i=0; i<show.length; i++) {
+          // console.log(show[i]);
+          // showArray.push(show[i].innerHTML);  // 자바스크립트 형식(바닐라)  // 이 값을 HTML 형식으로 변형해서 넣어주세요
+          showArray.push($(show[i]).html());  // jQuery 형식 // show의 i번째를 showArray 배열에 html 형식으로 그대로 넣어주세요
+          // showArray.push($(show[i]).text());  // html 태그 다 뺴고 data만 나옴(크롤링)  // 하이퍼링크 등으로 사용하려면 text로 사용하면 안됨
+        }
+        console.log(showArray);  // (배열의길이)[] <= 배열 // object는 키로 값을 꺼내고 요리를 못함(forEach로 가능)
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        $('#demo').html(showArray);
+
+        // $('#demo div:first').html(showArray);
+        // $('#demo div:last').html(showArray);
+        
+        $('.container > div:hidden').map((i, data)=>{
+          console.log(i, data);
+        });
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        
+        $('#demo').html(showArray).map((i, data)=>{  // jQuery에서 반복문 돌리는 map()  // map() => 배열로 처리된 값을 밖으로 꺼낼때 사용
+          console.log(i, data);
+        });
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        
+        let showData = $('#demo').html(showArray).map((i, data)=>{
+          console.log(i, data);
+          return $(data).html();  // data의 값을 html 형식으로 return let showData가 받음
+        })
+        console.log(showData);
+
+        showData = $('#demo').html(showArray).map((i, data)=>{
+          console.log(i, data);
+          return $(data).html();
+        }).get().join("/");  // join을 사용하려면 get()을 같이 사용해야함  // '/' 등으로 구분자를 넣어서 결합 join()  // 쪼개는건 split()
+        console.log(showData);
+        $("#demo2").html(showData);
+        console.log("*****************************************");
+
+        showData = $('.container div').css("color", "");
+        console.log('showData',showData);
+        // let temp = $("#demo2").html(showData).css('color', 'orange');
+
+        let mbc = showData.filter('.test').css('color','gray');
+        console.log('mbc', mbc);
+      });
+    });
+  </script>
+  <style>
+    div {
+      color: orange;
+    }
+    div.test {
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+  <h2>배열연습</h2>
+  <hr/>
+  <div><button id="btn1" class="btn btn-success">출력</button></div>
+  <hr/>
+  <div class="test" style="opacity: 0.2;">1.안녕하세요</div>  <!--뒤에 배경이 보인다.-->
+  <div style="display: none;">2.안녕하세요</div>  <!--영역까지 사라짐-->
+  <div>3.안녕하세요</div>
+  <div style="visibility: hidden;">4.안녕하세요</div>  <!--영역은 그대로 두고 사라짐-->
+  <div style="overflow: hidden;">5.안녕하세요</div>
+  <div style="overflow: hidden; width:50px;height:35px;">6.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요</div>
+  <div style="overflow: hidden; width:0px;height:0px;">7.안녕하세요</div>  <!--보여줄 공간을 없애서 화면에 안보이게 데이터 제어-->
+  <div class="test">8.안녕하세요</div>
+  <div id="demo">9.안녕하세요
+    <div>mbc</div>
+    <div>kbs</div>
+    <div>sbs</div>
+  </div>
+  <div class="test">10.안녕하세요</div>
+  <div id="demo2"></div>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>t17_slideDown_Up.html</title>
+  <title>t06_after_before2.html</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script> -->
@@ -12,32 +12,29 @@
   <script>
     'use strict';
 
-    $(function(){
-      $("div.menuOpen").hide();
+    $(() => {
 
-      $("button.menuBtn").on("mouseover", function(){
-        $("div.menuOpen").stop().slideDown("slow");
+      $("#setBtn").on('click', function(){
+        // $('#img').before('<img src="111.jpg" width="200px" />');
+        // $('#img').after('<img src="113.jpg" width="200px" />');
+        $('img')
+          .before('<img src="111.jpg" width="200px" />')  // chaining으로 쓴 것
+          .after('<img src="113.jpg" width="200px" />');
       });
-      $("div.menuOpen").on("mouseleave", function(){
-        $("div.menuOpen").stop().slideUp("slow");
-      });
+
     });
   </script>
   <style>
-    div .menuOpen {
-      width: 300px;
-      background-color: pink;
-    }
+    body { margin:0px; }
   </style>
 </head>
 <body>
 <p><br/></p>
 <div class="container">
-  <button class="menuBtn">메뉴연습</button>  <!--꼭 버튼으로 주지 않아도 됨-->
-  <div class="menuOpen">
-    메뉴1<br/>
-    메뉴2<br/>
-    메뉴3<br/>
+  <input type="button" value="내용추가" id="setBtn" class="btn btn-primary"/>
+  <hr/>
+  <div>
+    <img src="112.jpg" id="img" width="300px" />
   </div>
 </div>
 </body>
