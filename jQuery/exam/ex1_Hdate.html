@@ -140,20 +140,20 @@
                     alert("다른 날짜로 예약하시려면 예약취소를 눌러주세요.");
                 }
                 // 같은 셀을 두번 클릭할 시 그 외 날짜 전부 취소
-                else if(eval‎($(this).text()) == ct2) {
-                    $('td').filter(function() {return eval‎($(this).text()) != ct2;}).removeClass('bgColor');
+                else if(eval($(this).text()) == ct2) {
+                    $('td').filter(function() {return eval($(this).text()) != ct2;}).removeClass('bgColor');
                     ct = ct2;
                 }
                 // 첫번째 클릭
                 else if(sw2 == 0) {
-                    ct = eval‎($(this).text());
+                    ct = eval($(this).text());
                     ct2 = ct;
                     $(this).addClass('bgColor');
                     sw2 = 1;  
                 }
                 // 두번째 클릭
                 else {
-                ct2 = eval‎($(this).text());
+                ct2 = eval($(this).text());
                 // 첫번째 클릭한 날짜가 두번째 클릭한 날짜보다 클때 두 수 바꾸기
                 if(ct > ct2) {
                     let temp = ct2;
@@ -163,7 +163,7 @@
                 // 첫번째 클릭한 수와 두번째 클릭한 수를 포함한 두 수 사이 값을 가진 셀에 클래스 추가
                 for(let i=ct; i<=ct2; i++){
                     $('td').filter(function() {
-                        return eval‎($(this).text()) == i;
+                        return eval($(this).text()) == i;
                     }).addClass('bgColor');
                 }
                 sw2 = 2;
@@ -171,7 +171,7 @@
                 // 세번째 클릭으로 날짜 변경 시 선택한 셀 뒤에 셀 전부 취소
                 for(let i=ct2+1; i<=lastDay; i++){
                     $('td').filter(function() {
-                    return eval‎($(this).text()) == i;
+                    return eval($(this).text()) == i;
                     }).removeClass('bgColor');
                 }
             }
