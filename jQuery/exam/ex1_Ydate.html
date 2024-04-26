@@ -1,0 +1,214 @@
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar.html</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  .bgColor {
+      background-color: rgb(166, 219, 240);
+  }
+</style>
+<script>
+  'use strict';
+  let param = window.location.search;   // '?' 뒤의 쿼리스트링을 가져온다.
+  let yy, mm;
+  // param변수에 값이 담겨있다면 새로운 달력의 년도/월을 변경시켜서 다시 호출한 경우이다.
+  if(param != "") {
+    yy = param.substring(param.indexOf('yy=')+3,param.indexOf('yy=')+7);
+    mm = param.substring(param.lastIndexOf('mm=')+3);
+  }
+  // 오늘 날짜를 전역변수로 저장시켜놓기위해 날짜객체 생성후 date변수에 오늘 날짜만 받았다.
+  // 앞에서 넘어온 '년도(yy)'와 '월(mm)'이 존재한다면, year변수와 month변수에 넘어온 yy와 mm으로 사용하고 그렇지 않으면 오늘날짜 생성객체의 년도와 월을 저장한다.
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let date = today.getDate();
+  let todayYear = year.toString();
+  // 오늘날짜와 넘어온 날짜를 나중에 셀선택시에 비교해주기위해(오늘 이전은 선택되지 않게하기위함) 오늘날짜(tempToday)를 8자리로 편집후 저장시켜두었다.
+  if(month.toString().length == 1) month = '0' + month;
+  if(date.length == 1) date = '0' + date;
+  let currentToday = year + month + date;
+ 
+  if(param != "") {
+    year = yy;
+    month = mm;
+  }
+ 
+  let ymdLastDate;  // 해당월의 마지막일자 저장변수
+  let sw = 0;
+  let firstDate = 0;
+  let lastDate = 0;
+ 
+  $(document).ready(function() {
+    // 오늘 날짜 구해서 화면에 출력시켜주다.
+    let ymd = currentToday.substring(0,4) + "-" + currentToday.substring(4,6) + "-" + currentToday.substring(6);
+    $('#todayNalja').html(`<a href="calendar.html">오늘 날짜 : ${ymd}</a>`);
+ 
+    // 달력그리기 함수 호출
+    calendarDraw(year, month, 1); // 첫번째 달력그리기
+    calendarDraw(year, parseInt(month)+1, 2); // 두번째 달력그리기
+ 
+    // 년도 구해서 선택박스에 넣기
+    let strYear = '';
+    for(let i=todayYear; i<=parseInt(todayYear)+4; i++) {
+      if(i == year) strYear += `<option selected>${year}</option>`;
+      else strYear += `<option>${i}</option>`;
+    }
+    yearSelect.innerHTML = strYear;
+    
+    // 월 구해서 선택박스에 넣기
+    ymdLastDate = new Date(year,month,0).getDate(); // 해당월의 마지막일자구하기
+    let strMonth = '';
+    for(let i=1; i<=12; i++) {
+      if(i == month) strMonth += `<option selected>${month}</option>`;
+      else {
+        let imsiI = i;
+        if(i.toString().length == 1) imsiI = '0' + i;
+        strMonth += `<option>${imsiI}</option>`;
+      }
+    }
+    monthSelect.innerHTML = strMonth;
+ 
+    // 시작일자와 마지막일자 범위 설정하기
+    $('td').click(function() {
+ 
+      // 오늘 이전일을 선택할수 없게 한다.
+      let cellText = eval‎($(this).text());
+      if(cellText.toString().length == 1) cellText = '0' + cellText;
+      const tableId = $(this).closest('div').attr('id');
+      // console.log(tableId);
+      let tempClickToday = '';
+      if(tableId == 'calendar1'){ // 클릭한게 첫번째 달력이면
+        tempClickToday = $('#calendar1 .thisCalendar').text() + cellText;
+      }
+      else{
+        tempClickToday = $('#calendar2 .thisCalendar').text() + cellText;
+      }
+      tempClickToday = tempClickToday.substring(0,4)+tempClickToday.substring(5);
+      // console.log("1",currentToday, tempClickToday);
+      if(currentToday > tempClickToday) {
+        alert("오늘 이전일은 선택할 수 없습니다.");
+        return false;
+      }
+      else{
+        // sw가 0은 시작일, sw=1은 종료일이다.
+        if(sw == 0) { // 시작일 선택시
+          lastDate = '';
+          $(this).addClass('bgColor');
+          firstDate = tempClickToday;
+          $('#demo1').html('<b class="text-info">예약종료일자를 선택해주세요</b>')
+          $('#demo2').html(`<b>선택된 날짜 : ${firstDate.substring(0,4)}년 ${firstDate.substring(4,6)}월 ${firstDate.substring(6)}일 ~</b>`);
+          sw = 1;
+        }
+        else { // 종료일 선택시
+          lastDate = tempClickToday;
+          if(firstDate > lastDate) {
+            alert("시작일 이후날짜를 선택해주세요");
+            return false;
+          }
+          $(this).addClass('bgColor');
+          $('#demo1').html(`<b class="text-danger">예약일자 : ${firstDate.substring(0,4)}년 ${firstDate.substring(4,6)}월 ${firstDate.substring(6)}일 ~ ${lastDate.substring(0,4)}년 ${lastDate.substring(4,6)}월 ${lastDate.substring(6)}일</b>`)
+          $('#demo2').html(`<b>선택된 날짜 : ${firstDate.substring(0,4)}년 ${firstDate.substring(4,6)}월 ${firstDate.substring(6)}일 ~ ${lastDate.substring(0,4)}년 ${lastDate.substring(4,6)}월 ${lastDate.substring(6)}일</b>`);
+          
+          // 시작과 종료사이셀들 색입히기
+          let startWeek1 = new Date(year,month-1,1).getDay();
+          let startWeek2 = new Date(year,month,1).getDay();
+          let ymdLastDate1 = new Date(year,month,0).getDate(); // 시작월의 마지막일자
+          let ymdLastDate2 = new Date(year,month+1,0).getDate(); // 종료월의 마지막일자
+ 
+          if(firstDate.substring(4,6) == lastDate.substring(4,6)){ // 시작과 종료가 같은달이면..
+            if(tableId == 'calendar1'){
+              for(let i=parseInt(firstDate.substring(6))+7+startWeek1; i<parseInt(lastDate.substring(6))+7+startWeek1; i++) {
+                $('#calendar1 tr td').eq(i).addClass('bgColor')
+              }
+            }
+            else{
+              for(let i=parseInt(firstDate.substring(6))+7+startWeek2; i<parseInt(lastDate.substring(6))+7+startWeek2; i++) {
+                $('#calendar2 tr td').eq(i).addClass('bgColor');
+              }
+            }
+          }
+          else{ // 시작월의 종료달이 다른달이면..
+            for(let i=parseInt(firstDate.substring(6))+7+startWeek1; i<=ymdLastDate1+7+startWeek1; i++) {
+              $('#calendar1 tr td').eq(i).addClass('bgColor');
+            }
+            for(let i=7+startWeek2+1; i<parseInt(lastDate.substring(6))+7+startWeek2; i++) {
+              $('#calendar2 tr td').eq(i).addClass('bgColor');
+            }
+          }
+          
+        }
+      }
+ 
+      
+    });  
+  });
+ 
+  // 달력그리기 함수
+  function calendarDraw(year, month, calendar) {
+    console.log(year, month, calendar);
+    // 해당월 1일의 요일 구하기(0:일, 1:월, 2:화~~ 6:토) : 값이 숫자로 넘어온다.(해당숫자만큼 공백(td)을 넣어야한다.)
+    let startWeek = new Date(year,month-1,1).getDay();
+    let week = startWeek; // week변수는 일주일(7) 1개행을 체크하기위한 변수
+    
+    // 해당월의 마지막일자 구하기
+    ymdLastDate = new Date(year,month,0).getDate();
+    //console.log(ymdLastDate);
+ 
+    // 동적테이블 그리기
+    let calendarTable = `<table class="table table-bordered text-center mt-2"><tr><td colspan="7" class="bg-dark text-white thisCalendar">${year}-${('0'+month).slice(-2)}</td></tr><tr><td class="text-danger">일</td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td><td class="text-primary">토</td></tr>`;
+    
+    // calendarTable += `<td colspan="${startWeek}"></td>`;
+    for(let i=0; i<startWeek; i++) calendarTable += '<td></td>';
+ 
+    for(let i=1; i<=ymdLastDate; i++) {
+      if(week == 0) calendarTable += `<tr><td class="text-danger">${i}</td>`; // 일요일
+      else if(week == 6) calendarTable += `<td class="text-primary">${i}</td></tr>`; // 토요일
+      else calendarTable += `<td>${i}</td>`;
+ 
+      week++;
+      if(week == 7) week = 0;
+    }
+    if(week != 7) {
+      for(let i=week; i<7; i++) calendarTable += '<td></td>';
+    }
+    calendarTable += '</tr></table>';
+    if(calendar == '1') $('#calendar1').html(calendarTable);
+    else $('#calendar2').html(calendarTable);
+    
+  }
+ 
+  function calendarCheck() {
+    year = document.getElementById("yearSelect").value;
+    month = document.getElementById("monthSelect").value;
+    // calendarDraw(year, month);
+    location.href = `calendar.html?yy=${year}&mm=${month}`;
+  }
+ 
+</script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>첫번째날짜와 마지막 날짜를 클릭하여 날짜범위를 선택하세요.</h2>
+    <p>📢 오늘 날짜 이전은 선택하실 수 없습니다 </p>
+    <p id="todayNalja"></p>
+    <div class="mb-3">
+      <select id="yearSelect" onchange="calendarCheck()"></select>년
+      <select id="monthSelect" onchange="calendarCheck()"></select>월
+      <input type="button" value="다시선택" onclick="location.reload();" class="btn btn-dark btn-sm">
+    </div>
+ 
+    <div class="row">
+      <div id="calendar1" class="col"></div>
+      <div id="calendar2" class="col"></div>
+    </div>
+ 
+    <div id="demo1">📅예약하실 시작일자를 선택하세요.</div>
+    <div id="demo2"></div>
+  </div>
+</body>
+</html>
